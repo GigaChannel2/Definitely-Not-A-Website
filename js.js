@@ -12,6 +12,15 @@ function submit() {
         default:
             wrong();
             break;
+        case "Azzam gf":
+            textCh("thats a secret.")
+            break;
+        case "4 Brothers":
+            textCh("Great Childhood");
+            break;
+        case "Sans SMP":
+            textCh("Memories.");
+            break;
         case "Girzmtov":
             goTo("https://youtu.be/4I6smtKoJE4?si=R3cbKvzSgepL2jjw");
             break;
@@ -31,7 +40,7 @@ function submit() {
             textCh("Prison - Kids Edition");
             break;
         case "Nadia":
-            goTo("https://thisisnotawebsitedotcom.com");
+            goTo("https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://id.wikihow.com/Cepat-Kurus&ved=2ahUKEwiovv7A4O2LAxV3wTgGHYK6MZ8QFnoECC0QAQ&sqi=2&usg=AOvVaw0GJeJ5-8ny9ulUMstXglBb");
             break;
         case "Azzam Arsyad":
         case "Azzam":
