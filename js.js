@@ -1,5 +1,6 @@
 let password = document.getElementById("tbox");
 let txt = document.getElementById("txt");
+let pass = "";
 
 /*password.addEventListener("input", function(event) {
     this.value = this.value.toUpperCase();
@@ -8,61 +9,69 @@ let txt = document.getElementById("txt");
     password.value = password.value.toUpperCase();
 });*/
 function submit() {
-    switch (password.value){
+    pass = password.value.toLowerCase();
+    switch (pass){
         default:
             wrong();
             break;
-        case "UOLDVB":
+        case "experiment 8":
+            goTo("exp8.html");
+            break;
+        case "dina":
+        case "farid":
+            textCh("farid + dina = chinese boi");
+            break;
+        case "uoldvb":
             textCh("HAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHA\n");
             break;
-        case "Mobile Legend":
+        case "mobile legend":
             textCh("apa bagusnya coba, bosenin");
             break;
-        case "Experiment 17":
+        case "experiment 17":
             textCh("Dark.\nDarker.\nYet Darker.");
             break;
         case "regan" :
             textCh("liat bkp gak dihapus");
             break;
-        case "Azzam gf":
+        case "azzam gf":
             textCh("thats a secret.")
             break;
-        case "4 Brothers":
+        case "4 brothers":
             textCh("Great Childhood");
             break;
-        case "Sans SMP":
+        case "sans smp":
             textCh("Memories.");
             break;
-        case "Girzmtov":
+        case "girzmtov":
             goTo("https://youtu.be/4I6smtKoJE4?si=R3cbKvzSgepL2jjw");
             break;
-        case "Mystery":
+        case "mystery":
             textCh("Girzmtov");
             break;
-        case "Hour Of Joy":
+        case "hour of joy":
             goTo("https://youtu.be/TbWV7gCPiYc?si=6c5DmdMRQSCOQTeW");
             break;
-        case "Gravity Falls":
+        case "gravity falls":
             textCh("Great Show.");
             break;
-        case "Yogi":
+        case "yogi":
             textCh("boti");
             break;
-        case "School":
+        case "school":
             textCh("Prison - Kids Edition");
             break;
-        case "Nadia":
+        case "nadia":
             goTo("https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://id.wikihow.com/Cepat-Kurus&ved=2ahUKEwiovv7A4O2LAxV3wTgGHYK6MZ8QFnoECC0QAQ&sqi=2&usg=AOvVaw0GJeJ5-8ny9ulUMstXglBb");
             break;
-        case "Azzam Arsyad":
-        case "Azzam":
-        case "Arsyad":
+        case "azzam arsyad":
+        case "azzam":
+        case "arsyad":
             goTo("https://youtu.be/poa_QBvtIBA?si=6CcotfoXKYk6D04I");
             break;
-        case "Zaidan":
+        case "zaidan":
             goTo("https://youtu.be/lNZF_4DWJwo?si=MZPtF5QpDcqM5CLA");
             break;
-        case "Fadhil":
+        case "fadhil":
             goTo("https://www.google.com/search?client=ms-android-xiaomi-rvo2&sca_esv=f689f82e8856ae16&sxsrf=AHTn8zodOsV_xeKmZwuN2VvBnA2OyL4nhg:1740943555600&q=s+tee&udm=2&fbs=ABzOT_BSNAwfaLO6lL4gBi3V_V3PQPlU4bhzkBMjtuVnbBJlspph4VFOvLSFhpFsz0u1rgu6EKGcKjAe4KkpgL67phj3JemwytjEZii_aoTYSZ5UyamQN4ROwCdwCcMUq73Bxi2kr_ZGJIao7D-lmeOKtyPfh8v4o-oIXb9rt-PUfxuRSpZwoyJJ9twb9r2ghl4ozkD2uhOSWzmNYBQQqnYSjep8HvQOVWxQrcRAvoy0ovbnLmlVFMs&sa=X&ved=2ahUKEwjKmdKRkOyLAxUHSmwGHZQTMqsQtKgLegQICxAB&biw=501&bih=998&dpr=2.16")
     }
 }
