@@ -1,9 +1,28 @@
 let password = document.getElementById("tbox");
 let txt = document.getElementById("txt");
+
+/*password.addEventListener("input", function(event) {
+    this.value = this.value.toUpperCase();
+});*/
+/*password.addEventListener("input", ()=>{
+    password.value = password.value.toUpperCase();
+});*/
 function submit() {
     switch (password.value){
         default:
             wrong();
+            break;
+        case "Girzmtov":
+            goTo("https://youtu.be/4I6smtKoJE4?si=R3cbKvzSgepL2jjw");
+            break;
+        case "Mystery":
+            textCh("Girzmtov");
+            break;
+        case "Hour Of Joy":
+            goTo("https://youtu.be/TbWV7gCPiYc?si=6c5DmdMRQSCOQTeW");
+            break;
+        case "Gravity Falls":
+            textCh("Great Show.");
             break;
         case "Yogi":
             textCh("boti");
@@ -17,7 +36,7 @@ function submit() {
         case "Azzam Arsyad":
         case "Azzam":
         case "Arsyad":
-            goTo("https://youtu.be/dQw4w9WgXcQ?si=zIyTvueDL6XiejEB");
+            goTo("https://youtu.be/poa_QBvtIBA?si=6CcotfoXKYk6D04I");
             break;
         case "Zaidan":
             goTo("https://youtu.be/lNZF_4DWJwo?si=MZPtF5QpDcqM5CLA");
