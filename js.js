@@ -2,6 +2,11 @@ let password = document.getElementById("tbox");
 let txt = document.getElementById("txt");
 let pass = "";
 let sound = document.getElementById("aud");
+let on = document.getElementById("on");
+
+window.onLoad = function() {
+    on.play();
+};
 
 /*password.addEventListener("input", function(event) {
     this.value = this.value.toUpperCase();
