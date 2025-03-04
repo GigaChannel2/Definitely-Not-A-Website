@@ -1,6 +1,7 @@
 let password = document.getElementById("tbox");
 let txt = document.getElementById("txt");
 let pass = "";
+let sound = document.getElementById("aud");
 
 /*password.addEventListener("input", function(event) {
     this.value = this.value.toUpperCase();
@@ -13,6 +14,9 @@ function submit() {
     switch (pass){
         default:
             wrong();
+            break;
+        case "experiment 14":
+            goTo("exp14.html");
             break;
         case "experiment 8":
             goTo("exp8.html");
@@ -81,6 +85,7 @@ function wrong() {
     txt.style.color = "red";
     txt.style.opacity = 1;
     txt.innerHTML = "Wrong Password"
+    sound.play();
     setTimeout(function() {
         txt.style.opacity = 0;
         password.style.borderColor = "aliceblue";
@@ -90,7 +95,7 @@ function wrong() {
         password.onblur = function() {
             this.style.borderColor = "aliceblue";
         }
-    }, 1000);
+    }, 500);
 }
 
 function textCh(value) {
