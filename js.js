@@ -5,7 +5,6 @@ let sound = document.getElementById("aud");
 let on = document.getElementById("on");
 let body = document.getElementById("body");
 
-body.style.opacity = 0;
 setTimeout(function() {
     body.style.opacity = 1;
     on.play();
@@ -21,6 +20,9 @@ function submit() {
     switch (pass){
         default:
             wrong();
+            break;
+        case "naira putri":
+            goTo("https://www.google.com/search?client=ms-android-xiaomi-rvo2&sca_esv=b3124e538ea91f17&sxsrf=AHTn8zrUecQQOLvmKGHcYNZZs6AszjYSfQ:1741176592119&q=love+heart&uds=ABqPDvztZD_Nu18FR6tNPw2cK_RR_nOjWOfCgfo1dtdxBxE46H2ygKcZjw-VXJzRUActioIVjgE812u42QfrhOkjVPAHh3kp2RVvTf8mRbnR0NsJeyoOJPf-Rk_JZfqfcP72-x3sVK-1sDwIZLQWaJ4oBOxGtbIcDA&udm=2&sa=X&ved=2ahUKEwjUloyi9PKLAxUmxKACHa7ZAKwQxKsJegQICBAB&ictx=0&biw=501&bih=998&dpr=2.16";)
             break;
         case "experiment 14":
             goTo("exp14.html");
