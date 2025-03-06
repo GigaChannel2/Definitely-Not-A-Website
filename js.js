@@ -22,9 +22,10 @@ function submit() {
             wrong();
             break;
         case "the prism":
+            goTo("theprism.html");
             break;
         case "red prism":
-            goTo("redprism.html");
+            goTo("prisms/redprism.html");
             break;
         case "deva":
             textCh("papua boi");
