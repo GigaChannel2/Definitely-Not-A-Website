@@ -5,9 +5,9 @@ let sound = document.getElementById("aud");
 let on = document.getElementById("on");
 let body = document.getElementById("body");
 
+on.play();
 setTimeout(function() {
     body.style.opacity = 1;
-    on.play();
 }, 1);
 /*password.addEventListener("input", function(event) {
     this.value = this.value.toUpperCase();
@@ -23,6 +23,24 @@ function submit() {
             break;
         case "the prism":
             goTo("theprism.html");
+            break;
+        case "green prism":
+            goTo("prisms/greenprism.html");
+            break;
+        case "purple prism":
+            goTo("prisms/purpleprism.html");
+            break;
+        case "pink prism":
+            goTo("prisms/pinkprism.html");
+            break;
+        case "orange prism":
+            goTo("prisms/orangeprism.html");
+            break;
+        case "yellow prism":
+            goTo("prisms/yellowprism.html")
+            break;
+        case "blue prism":
+            goTo("prisms/blueprism.html")
             break;
         case "red prism":
             goTo("prisms/redprism.html");
