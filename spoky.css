@@ -6,8 +6,43 @@ body {
   color: white;
 }
 
+button {
+  cursor: pointer;
+}
+
+#close_donate{
+  content: "\2715";
+  width: 10%;
+  transition: font-size 0.5s ease;
+  font-size: 120%;
+  height: 5%;
+  border: none;
+  border-radius: 15px 15px 15px 15px;
+  padding-right: 5px;
+  float: right;
+  background: white;
+}
+
+#close_donate:active{
+  font-size: 140%;
+  transition: font-size 0.5s ease;
+  content: "\2716";
+  transition: font-family 0.6s ease;
+  border:none;
+  background: grey;
+}
+dialog {
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  width: 70%;
+  height: 80%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  align-content: center;
+}
 #donation{
-  display: none;
+  /*display: none;*/
 }
 #but {
   margin-top: 65px;

@@ -16,7 +16,10 @@
       <h1 id="txt"></h1>
     </div>
     <div id="donation">
-      <embed src="https://trakteer.id/gigachannel/tip">
+      <dialog id="dia">
+        <button id="close_donate" onclick="close_d()">&#x2715</button>
+        <embed id="donate_popup" width="100%" height="100%" src="https://trakteer.id/gigachannel/tip/embed/modal">
+      </dialog>
     </div>
     <script src="js.js">
     </script>

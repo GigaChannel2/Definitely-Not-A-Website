@@ -4,6 +4,7 @@ let pass = "";
 let sound = document.getElementById("aud");
 let on = document.getElementById("on");
 let body = document.getElementById("body");
+let dia = document.getElementById("dia");
 
 on.play();
 setTimeout(function() {
@@ -15,13 +16,19 @@ setTimeout(function() {
 /*password.addEventListener("input", ()=>{
     password.value = password.value.toUpperCase();
 });*/
+
+function close_d() {
+    dia.close();
+}
 function submit() {
     pass = password.value.toLowerCase();
     let donate = document.getElementById("donation");
     if (pass == "donate"){
-        donate.style.display = "block";
+        //donate.style.display = "block";
+        dia.showModal();
     } else {
-        donate.style.display = "none";
+        //donate.style.display = "none";
+        dia.close();
     }
     switch (pass){
         default:
