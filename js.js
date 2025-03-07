@@ -23,9 +23,11 @@ function close_d() {
 function submit() {
     pass = password.value.toLowerCase();
     let donate = document.getElementById("donation");
+    let sfx_donate = document.getElementById("sfx_donate");
     if (pass == "donate"){
         //donate.style.display = "block";
         dia.showModal();
+        sfx_donate.play();
     } else {
         //donate.style.display = "none";
         dia.close();
