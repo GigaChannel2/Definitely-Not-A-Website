@@ -17,9 +17,17 @@ setTimeout(function() {
 });*/
 function submit() {
     pass = password.value.toLowerCase();
+    let donate = document.getElementById("donation");
+    if (pass == "donate"){
+        donate.style.display = "block";
+    } else {
+        donate.style.display = "none";
+    }
     switch (pass){
         default:
             wrong();
+            break;
+        case "donate":
             break;
         case "the prism":
             goTo("theprism.html");

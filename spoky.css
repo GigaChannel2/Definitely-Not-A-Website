@@ -6,6 +6,9 @@ body {
   color: white;
 }
 
+#donation{
+  display: none;
+}
 #but {
   margin-top: 65px;
   border-radius: 8px 8px 8px 8px;
