@@ -90,9 +90,6 @@ function submit() {
         case "regan" :
             textCh("liat bkp gak dihapus");
             break;
-        case "azzam gf":
-            textCh("thats a secret.")
-            break;
         case "4 brothers":
             textCh("Great Childhood");
             break;
