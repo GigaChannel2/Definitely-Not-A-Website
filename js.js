@@ -65,9 +65,6 @@ function submit() {
         case "deva":
             textCh("papua boi");
             break;
-        case "naira putri":
-            goTo("https://www.google.com/search?q=cara+membuat+orang+jatuh+cinta&oq=cara+membuat+orang+jatuh+cinta&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIICAYQABgWGB4yCAgHEAAYFhgeMggICBAAGBYYHjIICAkQABgWGB4yCAgKEAAYFhgeMggICxAAGBYYHjIICAwQABgWGB4yCAgNEAAYFhgeMggIDhAAGBYYHtIBCTEzMzEzajBqNKgCDrACAfEFVzILYGVJ6x0&client=ms-android-xiaomi-rvo2&sourceid=chrome-mobile&ie=UTF-8");
-            break;
         case "experiment 14":
             goTo("exp14.html");
             break;
@@ -86,9 +83,6 @@ function submit() {
             break;
         case "experiment 17":
             textCh("Dark.\nDarker.\nYet Darker.");
-            break;
-        case "regan" :
-            textCh("liat bkp gak dihapus");
             break;
         case "4 brothers":
             textCh("Great Childhood");
