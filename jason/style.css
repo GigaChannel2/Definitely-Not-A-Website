@@ -36,6 +36,9 @@ button {
   text-align: right; 
   margin-left: auto; 
 }
+#memory-editor {
+  font-family: "Comfortaa";
+}
 .bot {
   background: #444; 
   text-align: left; 
