@@ -36,6 +36,9 @@ function submit() {
         default:
             wrong();
             break;
+        case "0704":
+            goTo("jason/jason.html")
+            break;
         case "donate":
             break;
         case "the prism":
