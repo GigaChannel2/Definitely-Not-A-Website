@@ -5,6 +5,26 @@ body {
   color: #eee; 
   padding: 20px; 
 }
+
+#subt {
+  
+}
+
+#voicebut {
+  position: relative;
+  border-radius: 15px 15px 15px 15px;
+  margin-top: 10px;
+  width: 60px;
+}
+
+#closeV {
+  background-color: red;
+}
+
+#jason-face{
+  /*width: 500px;
+  height: 150px;*/
+}
 #togmem {
   margin-bottom: 10px
 }
@@ -38,6 +58,7 @@ button {
 }
 #memory-editor {
   font-family: "Comfortaa";
+  outline: none;
 }
 .bot {
   background: #444; 
@@ -45,7 +66,13 @@ button {
   margin-right: auto; 
 }
 input[type="text"] { 
-  width: 100%; 
+  width: 90%; 
   padding: 10px; 
-  font-size: 1rem; 
+  font-size: 1rem;
+  border: 2px solid;
+  outline: none;
+}
+
+input {
+  outline: none;
 }
