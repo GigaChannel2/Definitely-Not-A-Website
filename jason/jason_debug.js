@@ -2,9 +2,10 @@
 
 const input = document.getElementById("input");
 const chat = document.getElementById("chat");
-const API_KEY = "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"; // <- GANTI INI
+const API_KEY = "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"; // <- GANTI INI
 const API_URL = "https://openrouter.ai/api/v1/chat/completions";
 const model = "deepseek/deepseek-chat:free";
+const voiceActivation = false;
 
 // ===== Memory Management =====
 function loadMemory() {
@@ -19,12 +20,6 @@ function saveMemory(fact) {
 
 function saveMemoryDirect(newMemory) {
   localStorage.setItem("jason_memory", newMemory);
-}
-
-function findRemember(text) {
-  const pattern = /remember:(.*?)(?:$|\n)/gi;
-  const matches = [...text.matchAll(pattern)];
-  return matches.map(m => m[1].trim());
 }
 
 // ===== Message UI =====
@@ -85,7 +80,11 @@ input.addEventListener("keydown", async (e) => {
 
     const data = await response.json();
     const reply = data?.choices?.[0]?.message?.content || "Jason failed to reply.";
-    addMessage(reply, "bot");
+    if (voiceActivation) {
+      handleJasonReply(reply);
+    } else {
+      addMessage(reply, "bot")
+    }
 
     const memories = findRemember(reply);
     memories.forEach(fact => saveMemory("AI Memory: " + fact));
@@ -119,14 +118,13 @@ function saveMemoryEditor() {
   alert("Memory saved!");
 }
 
-// ===== JASON VOICE MODE (v1.0) =====
+// ===== JASON VOICE MODE (v2.0) - With Pop-up Mic Mode =====
 
 let isMuted = false;
 
 function speak(text) {
-  if (isMuted) return;
   const utter = new SpeechSynthesisUtterance(text);
-  utter.voice = speechSynthesis.getVoices().find(v => v.lang === "en-US");
+  utter.voice = speechSynthesis.getVoices().find(v => v.lang === "en-US"); // Ganti suara
   speechSynthesis.speak(utter);
   animateTalking(text);
 }
@@ -134,10 +132,9 @@ function speak(text) {
 function animateTalking(text) {
   const face = document.getElementById("jason-face");
   if (!face) return;
-
-  face.src = "visual/jason_talk.gif"; // Ganti ke animasi bicara
+  face.src = "jason_talk.gif";
   setTimeout(() => {
-    face.src = "visual/jason_idle.png"; // Balik ke idle setelah selesai
+    face.src = "jason_idle.png";
   }, Math.min(text.length * 50, 4000));
 }
 
@@ -147,33 +144,82 @@ function toggleMute() {
   btn.innerText = isMuted ? "Unmute Voice" : "Mute Voice";
 }
 
-function startListening() {
+function handleJasonReply(reply) {
+  addMessage(reply, "bot");
+  speak(reply);
+  const text = document.getElementById("subt");
+
+  const wordCount = text.trim().split(/\s+/).length;
+
+  if (wordCount > 50) {
+  // Do something if the text has more than 50 words
+    text.value = "Too Much Word To Be Shown";
+  } else {
+    text.value = reply;
+  }
+}
+
+// ===== MIC MODE POPUP =====
+function openMicPopup() {
+  document.getElementById("mic-popup").style.display = "flex";
+}
+
+function closeMicPopup() {
+  document.getElementById("mic-popup").style.display = "none";
+}
+
+function startListeningInPopup() {
   if (!('webkitSpeechRecognition' in window)) {
     alert("Speech recognition not supported in this browser.");
     return;
   }
 
   const recognition = new webkitSpeechRecognition();
-  recognition.lang = "id-ID"; // ganti ke en-US kalau mau English
+  recognition.lang = "id-ID";
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
 
   recognition.onresult = function (event) {
     const voiceText = event.results[0][0].transcript;
-    input.value = voiceText; // Masukkan ke input
-    input.focus(); // Fokus ke input
+    input.value = voiceText;
+    input.focus();
+    const enterEvent = new KeyboardEvent("keydown", {
+      key: "Enter",
+      keyCode: 13,
+      which: 13
+    });
+    input.dispatchEvent(enterEvent);
   };
 
   recognition.onerror = function (event) {
     alert("Speech error: " + event.error);
+    closeMicPopup();
   };
 
   recognition.start();
 }
 
-// Panggil fungsi ini setelah Jason menjawab
-function handleJasonReply(reply) {
-  handleJasonReply(reply); // ← biar Jason langsung ngomong
-  speak(reply);
+// ===== EXPORT/IMPORT MEMORY =====
+function exportMemory() {
+  const memory = localStorage.getItem("jason_memory") || "";
+  const blob = new Blob([memory], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "jason_memory.txt";
+  a.click();
+  URL.revokeObjectURL(url);
 }
-isMuted = false;
+
+function importMemory(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const content = e.target.result;
+    localStorage.setItem("jason_memory", content);
+    alert("Memory imported!");
+  };
+  reader.readAsText(file);
+}
