@@ -7,7 +7,7 @@ body {
 }
 
 #subt {
-  
+  padding: 5px;
 }
 
 #voicebut {
@@ -30,7 +30,7 @@ body {
 }
 button {
   border: none;
-  background-color: gold;
+  background-color: #4080FF;
   width: 100px;
   height: 50px;
 }
