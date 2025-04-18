@@ -2,170 +2,223 @@
 
 const input = document.getElementById("input");
 const chat = document.getElementById("chat");
-const API_KEY = "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"; // <- GANTI INI
+let currentKeyIndex = 0;
+const apiKeys = [
+  "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",
+  "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",
+  "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"
+];
+//const voiceKey = "sk_24dfea9f09c731b4ddc06a669bc8fa1b3c2adf8377cf1f49" //ElevenLabs API Key
 const API_URL = "https://openrouter.ai/api/v1/chat/completions";
 const model = "deepseek/deepseek-chat:free";
-const voiceActivation = false;
+let voiceActivation = false;
+const voiceModeResponses = [
+  "Voice interface activated. I am listening.",
+  "Jason here Sir, Needed Help?",
+  "Greetings, I am ready to speak.",
+  "My voice is now online. Ready for orders.",
+  "Ah, voice mode. Fancy, isn't it?",
+  "Jason online, at your service sir."
+];
+let recognition = null;
 
-// ===== Memory Management =====
+// Jason v2.0 Logic - Typing Effect + Voice Mode
+
+function getCurrentApiKey() {
+  return apiKeys[currentKeyIndex];
+}
+
+function rotateApiKey() {
+  currentKeyIndex++;
+  if (currentKeyIndex >= apiKeys.length) currentKeyIndex = 0;
+  addMessage("Switched API key.", "bot");
+  return getCurrentApiKey();
+}
+
+// === Memory ===
 function loadMemory() {
   return localStorage.getItem("jason_memory") || "";
 }
-
 function saveMemory(fact) {
   const current = loadMemory();
-  const updated = current + "\n" + fact;
-  localStorage.setItem("jason_memory", updated);
+  localStorage.setItem("jason_memory", current + "\n" + fact);
+}
+function saveMemoryDirect(newMem) {
+  localStorage.setItem("jason_memory", newMem);
 }
 
-function saveMemoryDirect(newMemory) {
-  localStorage.setItem("jason_memory", newMemory);
-}
-
-// ===== Message UI =====
+// === Chat UI ===
 function addMessage(text, role) {
   const bubble = document.createElement("div");
   bubble.classList.add("bubble", role);
-  bubble.innerText = text;
   chat.appendChild(bubble);
   chat.scrollTop = chat.scrollHeight;
-}
-
-// ===== Command Handler =====
-function handleCommand(commandText) {
-  if (commandText.startsWith("/remember ")) {
-    const fact = commandText.replace("/remember ", "").trim();
-    if (fact) {
-      saveMemory("AI Memory: " + fact);
-      addMessage("Got it! [MEMORY SAVED]", "bot");
-    } else {
-      addMessage("Nothing to remember.", "bot");
-    }
-    return true;
+  if (role === "bot") {
+    typeReply(text, bubble);
+  } else {
+    bubble.innerText = text;
   }
-  return false;
 }
 
-// ===== Main Chat Handler =====
-input.addEventListener("keydown", async (e) => {
-  if (e.key === "Enter") {
-    const userText = input.value.trim();
-    if (!userText) return;
+async function loginToJason() {
+  const pass = prompt("Enter password to unlock Jason's memory:");
 
-    addMessage(userText, "user");
-    input.value = "";
-      
-      const border = document.getElementById("chat");
-      border.style.opacity = 1;
-
-    if (handleCommand(userText)) return; // Handle command
-
-    const memory = loadMemory();
-    const messages = [
-      {
-        role: "system",
-        content: `You are Jason. Talk casually. Here's your memory:\n${memory || "No memory yet."}`
-      },
-      { role: "user", content: userText }
-    ];
-
-    const response = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${API_KEY}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ model: model, messages: messages })
-    });
-
-    const data = await response.json();
-    const reply = data?.choices?.[0]?.message?.content || "Jason failed to reply.";
-    if (voiceActivation) {
-      handleJasonReply(reply);
-    } else {
-      addMessage(reply, "bot")
-    }
-
-    const memories = findRemember(reply);
-    memories.forEach(fact => saveMemory("AI Memory: " + fact));
+  if (pass === "inipassword123") {
+    const res = await fetch("https://raw.githubusercontent.com/Definitely-Not-A-Website/jason/memory.txt");
+    const mem = await res.text();
+    const but = document.getElementById("login");
+    localStorage.setItem("jason_memory", mem);
+    but.style.display = "none";
+    //alert("Jason memory unlocked.");
+  } else {
+    localStorage.setItem("jason_memory", ""); // Kosongin
+    //alert("Wrong password. Jason has no memory.");
   }
-});
-
-// ===== Memory UI =====
-function toggleMemory() {
-  const section = document.getElementById("memory-section");
-  const editor = document.getElementById("memory-editor");
-  const saveBtn = document.getElementById("save-btn");
-  section.style.display = section.style.display === "none" ? "block" : "none";
-  editor.value = loadMemory();
-  editor.readOnly = true;
-  saveBtn.style.display = "none";
 }
 
-function editMemory() {
-  const editor = document.getElementById("memory-editor");
-  const saveBtn = document.getElementById("save-btn");
-  editor.readOnly = false;
-  saveBtn.style.display = "inline-block";
+function typeReply(text, bubble, i = 0) {
+  if (i < text.length) {
+    bubble.innerText += text.charAt(i);
+    setTimeout(() => typeReply(text, bubble, i + 1), 18);
+  } else {
+    if (voiceActivation) speak(text);
+  }
 }
 
-function saveMemoryEditor() {
-  const editor = document.getElementById("memory-editor");
-  const newMemory = editor.value;
-  saveMemoryDirect(newMemory);
-  editor.readOnly = true;
-  document.getElementById("save-btn").style.display = "none";
-  alert("Memory saved!");
-}
-
-// ===== JASON VOICE MODE (v2.0) - With Pop-up Mic Mode =====
-
-let isMuted = false;
-
+// === Speak ===
 function speak(text) {
+  if (isMuted) return;
   const utter = new SpeechSynthesisUtterance(text);
-  utter.voice = speechSynthesis.getVoices().find(v => v.lang === "en-US"); // Ganti suara
+  const voices = speechSynthesis.getVoices();
+  utter.voice = voices.find(v => v.lang === "en-US") || voices[0];
+  utter.pitch = 0.8;
+  utter.rate = 0.95;
+  utter.volume = 1;
+  const face = document.getElementById("jason-face");
+  face.src = "visual/jason_talk.gif";
+  utter.onend = function() {
+    if (!face) return;
+    face.src = "visual/jason_idle.png";
+  }
   speechSynthesis.speak(utter);
-  animateTalking(text);
 }
 
 function animateTalking(text) {
   const face = document.getElementById("jason-face");
   if (!face) return;
-  face.src = "jason_talk.gif";
+  face.src = "visual/jason_talk.gif";
   setTimeout(() => {
-    face.src = "jason_idle.png";
+    face.src = "visual/jason_idle.png";
   }, Math.min(text.length * 50, 4000));
 }
 
-function toggleMute() {
-  isMuted = !isMuted;
-  const btn = document.getElementById("mute-btn");
-  btn.innerText = isMuted ? "Unmute Voice" : "Mute Voice";
-}
 
-function handleJasonReply(reply) {
-  addMessage(reply, "bot");
-  speak(reply);
-  const text = document.getElementById("subt");
+// === Fetch AI ===
+async function fetchJasonReply(userInput) {
+  const apiKey = getCurrentApiKey();
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model: model,
+        messages: [{ role: "user", content: userInput }]
+      })
+    });
 
-  const wordCount = text.trim().split(/\s+/).length;
+    if (!response.ok) {
+      if (response.status === 401 || response.status === 429) {
+        if (!currentKeyIndex <= 3) {
+            rotateApiKey();
+            return fetchJasonReply(userInput);
+        }
+      }
+      throw new Error(`HTTP ${response.status}`);
+    }
 
-  if (wordCount > 50) {
-  // Do something if the text has more than 50 words
-    text.value = "Too Much Word To Be Shown";
-  } else {
-    text.value = reply;
+    const data = await response.json();
+    const reply = data.choices?.[0]?.message?.content || "(no reply)";
+    addMessage(reply, "bot");
+    if (voiceActivation) {
+      speak(reply);
+    }
+  } catch (err) {
+    addMessage("Jason error: " + err.message, "bot");
   }
 }
 
-// ===== MIC MODE POPUP =====
+// === Input Handler ===
+input.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    const userInput = input.value.trim();
+    if (!userInput) return;
+    input.value = "";
+    addMessage(userInput, "user");
+    fetchJasonReply(userInput);
+  }
+});
+
+// === Memory UI ===
+function toggleMemory() {
+  const section = document.getElementById("memory-section");
+  const editor = document.getElementById("memory-editor");
+  section.style.display = section.style.display === "none" ? "block" : "none";
+  editor.value = loadMemory();
+  editor.readOnly = true;
+  document.getElementById("save-btn").style.display = "none";
+}
+
+function editMemory() {
+  const editor = document.getElementById("memory-editor");
+  editor.readOnly = false;
+  document.getElementById("save-btn").style.display = "inline-block";
+}
+
+function saveMemoryEditor() {
+  const newMemory = document.getElementById("memory-editor").value;
+  saveMemoryDirect(newMemory);
+  document.getElementById("save-btn").style.display = "none";
+  alert("Memory saved!");
+}
+
+function exportMemory() {
+  const memory = loadMemory();
+  const blob = new Blob([memory], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "jason_memory.txt";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importMemory(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    localStorage.setItem("jason_memory", e.target.result);
+    alert("Memory imported!");
+  };
+  reader.readAsText(file);
+}
+
+// === Voice Popup ===
 function openMicPopup() {
   document.getElementById("mic-popup").style.display = "flex";
+  voiceActivation = true;
 }
 
 function closeMicPopup() {
   document.getElementById("mic-popup").style.display = "none";
+  voiceActivation = false;
+  if (recognition) {
+    recognition.abort();
+    recognition = null;
+  }
 }
 
 function startListeningInPopup() {
@@ -174,7 +227,10 @@ function startListeningInPopup() {
     return;
   }
 
-  const recognition = new webkitSpeechRecognition();
+  const text = document.getElementById("subt");
+  text.textContent = "Jason is listening...";
+
+  recognition = new webkitSpeechRecognition();
   recognition.lang = "id-ID";
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
@@ -189,37 +245,13 @@ function startListeningInPopup() {
       which: 13
     });
     input.dispatchEvent(enterEvent);
+    text.textContent = "Processing...";
   };
 
   recognition.onerror = function (event) {
-    alert("Speech error: " + event.error);
+    text.textContent = "Mic Error / Cancelled.";
     closeMicPopup();
   };
 
   recognition.start();
-}
-
-// ===== EXPORT/IMPORT MEMORY =====
-function exportMemory() {
-  const memory = localStorage.getItem("jason_memory") || "";
-  const blob = new Blob([memory], { type: "text/plain" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "jason_memory.txt";
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-function importMemory(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const content = e.target.result;
-    localStorage.setItem("jason_memory", content);
-    alert("Memory imported!");
-  };
-  reader.readAsText(file);
 }

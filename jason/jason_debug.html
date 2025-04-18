@@ -1,37 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jason AI</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style_debug.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Varela+Round&display=swap" rel="stylesheet">
 </head>
 <body>
-  <button id="togmem" onclick="toggleMemory()">Show/Hide Memory</button>
-  <div id="memory-section" style="display:none; margin-top:10px;">
-    <textarea id="memory-editor" style="width:100%; height:150px;" readonly></textarea>
-    <br />
-    <button onclick="editMemory()">Edit</button>
-    <button onclick="exportMemory()">Export Memory</button>
-    <button onclick="document.getElementById('import-input').click()">Import Memory</button>
-    <input type="file" id="import-input" style="display: none;" onchange="importMemory(event)" />
-    <button onclick="saveMemoryEditor()" style="display:none;" id="save-btn">Save</button>
+  <div class="container">
+    <header>
+      <button id="login" onclick="loginToJason()">Login</button>
+      <h1 id="title">Jason</h1>
+      <p class="subtitle">Joyful Azzam Strategic Operational Nexus</p>
+    </header>
+
+    <div id="chat" class="chat-window"></div>
+
+    <div class="input-bar">
+      <input id="input" type="text" placeholder="Type your command here...">
+      <button onclick="openMicPopup()">🎤</button>
+    </div>
+
+    <div id="memory-section" class="memory-panel">
+      <textarea id="memory-editor" readonly></textarea>
+      <button id="save-btn" onclick="saveMemoryEditor()">Save</button>
+    </div>
+
+    <div id="mic-popup" class="popup">
+      <div class="popup-content">
+        <h2>Voice Mode</h2>
+        <img src="visual/jason_idle.png" id="jason-face">
+        <p id="subt">Press Start To Speak</p>
+        <div class="popup-buttons">
+          <button onclick="startListeningInPopup()">Start</button>
+          <button onclick="closeMicPopup()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <button onclick="toggleMemory()">Memory</button>
+      <button id="edit-btn" onclick="editMemory()">Edit</button>
+      <button onclick="exportMemory()">⬇ Export</button>
+      <button onclick="document.getElementById('import-file').click()">⬆ Import</button>
+      <input type="file" id="import-file" style="display:none" onchange="importMemory(event)">
+    </footer>
   </div>
-  <!-- Pop-up Modal -->
-  <div id="mic-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:9999; flex-direction:column; color:white;">
-  <img id="jason-face" src="visual/jason_idle.png" style="max-width:150px; margin-bottom:20px;" />
-  <p id="subt" style="font-size:18px;">Jason sedang mendengarkan...</p>
-  <button onclick="startListeningInPopup()">Mulai Bicara</button>
-  <button id="mute-btn" onclick="toggleMute()">Mute Voice</button>
-  <button id="closeV" onclick="closeMicPopup()">Cancel</button>
-  </div>
-  <div id="chat"></div>
-  <input type="text" id="input" placeholder="Type your message..." autocomplete="off" />
-  <!-- Trigger Button -->
-  <button id="voicebut" onclick="openMicPopup()"><img src="mic.png" style="width:100%; height: 100%;"></button>
 
   <script src="jason_debug.js"></script>
 </body>
