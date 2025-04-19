@@ -99,6 +99,7 @@ function speak(text) {
   utter.onend = function() {
     if (!face) return;
     face.src = "visual/jason_idle.png";
+    startListeningInPopup();
   }
   speechSynthesis.speak(utter);
 }
