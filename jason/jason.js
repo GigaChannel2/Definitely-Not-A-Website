@@ -64,7 +64,7 @@ async function loginToJason() {
   const pass = prompt("Enter password to unlock Jason's memory:");
 
   if (pass === "inipassword123") {
-    const res = await fetch("https://raw.githubusercontent.com/Definitely-Not-A-Website/jason/memory.txt");
+    const res = await fetch("https://raw.githubusercontent.com/GigaChannel2/Definitely-Not-A-Website/refs/heads/main/jason/memory.txt");
     const mem = await res.text();
     const but = document.getElementById("login");
     localStorage.setItem("jason_memory", mem);
