@@ -131,9 +131,12 @@ async function fetchJasonReply(userInput) {
 
     if (!response.ok) {
       if (response.status === 401 || response.status === 429) {
-        if (!currentKeyIndex <= 3) {
+        if (currentKeyIndex < apiKeys.length - 1) {
             rotateApiKey();
             return fetchJasonReply(userInput);
+        } else {
+            addMessage("All API keys exhausted or blocked.", "bot");
+            return;
         }
       }
       throw new Error(`HTTP ${response.status}`);
