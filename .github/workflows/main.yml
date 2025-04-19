@@ -19,4 +19,4 @@ jobs:
       - name: Run script with secret
         run: node index.js
         env:
-          MY_SECRET: ${{ secrets.api_key }}
+          MY_SECRET: ${{ secrets.JASON_KEY }}
