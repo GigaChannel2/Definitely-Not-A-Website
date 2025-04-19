@@ -1,5 +1,6 @@
 // JASON WEB - WITH COMMANDS + MEMORY (v1.0)
 
+require("dotenv").config();
 const input = document.getElementById("input");
 const chat = document.getElementById("chat");
 let currentKeyIndex = 0;
