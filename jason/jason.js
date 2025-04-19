@@ -4,9 +4,9 @@ const input = document.getElementById("input");
 const chat = document.getElementById("chat");
 let currentKeyIndex = 0;
 const apiKeys = [
-  "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",
-  "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",
-  "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"
+  "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",
+  "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",
+  "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"
 ];
 //const voiceKey = "sk_24dfea9f09c731b4ddc06a669bc8fa1b3c2adf8377cf1f49" //ElevenLabs API Key
 const API_URL = "https://openrouter.ai/api/v1/chat/completions";
@@ -122,7 +122,9 @@ async function fetchJasonReply(userInput) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`
+        "Authorization": `Bearer ${apiKey}`,
+        "HTTP-Referer": "https://your-website.com", // opsional tapi disarankan
+        "X-Title": "Jason"
       },
       body: JSON.stringify({
         model: model,
