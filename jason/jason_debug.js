@@ -4,9 +4,9 @@ const input = document.getElementById("input");
 const chat = document.getElementById("chat");
 let currentKeyIndex = 0;
 const apiKeys = [
-  "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",
+  "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",
   "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",
-  "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"
+  "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"
 ];
 //const voiceKey = "sk_24dfea9f09c731b4ddc06a669bc8fa1b3c2adf8377cf1f49" //ElevenLabs API Key
 const API_URL = "https://openrouter.ai/api/v1/chat/completions";
