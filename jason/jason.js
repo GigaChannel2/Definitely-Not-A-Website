@@ -1,13 +1,12 @@
 // JASON WEB - WITH COMMANDS + MEMORY (v1.0)
 
-require("dotenv").config();
 const input = document.getElementById("input");
 const chat = document.getElementById("chat");
 let currentKeyIndex = 0;
 const apiKeys = [
-  process.env.jason_key,
-  process.env.jason_key2,
-  process.env.jason_key3
+  "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",
+  "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",
+  "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"
 ];
 //const voiceKey = "sk_24dfea9f09c731b4ddc06a669bc8fa1b3c2adf8377cf1f49" //ElevenLabs API Key
 const API_URL = "https://openrouter.ai/api/v1/chat/completions";
@@ -22,6 +21,7 @@ const voiceModeResponses = [
   "Jason online, at your service sir."
 ];
 let recognition = null;
+const isMuted = false;
 
 // Jason v2.0 Logic - Typing Effect + Voice Mode
 
@@ -60,12 +60,20 @@ function addMessage(text, role) {
     bubble.innerText = text;
   }
 }
+function toggleMute() {
+  const mute = document.getElementById("muteBtt");
+  if (isMuted) {
+    mute.innerText = "Unmute";
+  } else {
+    mute.innerText = "Mute";
+  }
+}
 
 async function loginToJason() {
   const pass = prompt("Enter password to unlock Jason's memory:");
 
   if (pass === "inipassword123") {
-    const res = await fetch("https://raw.githubusercontent.com/GigaChannel2/Definitely-Not-A-Website/refs/heads/main/jason/memory.txt");
+    const res = await fetch("https://raw.githubusercontent.com/Definitely-Not-A-Website/jason/memory.txt");
     const mem = await res.text();
     const but = document.getElementById("login");
     localStorage.setItem("jason_memory", mem);
@@ -79,7 +87,7 @@ async function loginToJason() {
 
 function typeReply(text, bubble, i = 0) {
   if (i < text.length) {
-    bubble.innerText += text.charAt(i);
+    bubble.textContent += text.charAt(i);
     setTimeout(() => typeReply(text, bubble, i + 1), 18);
   } else {
     if (voiceActivation) speak(text);
@@ -100,7 +108,6 @@ function speak(text) {
   utter.onend = function() {
     if (!face) return;
     face.src = "visual/jason_idle.png";
-    startListeningInPopup();
   }
   speechSynthesis.speak(utter);
 }
@@ -123,9 +130,7 @@ async function fetchJasonReply(userInput) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`,
-        "HTTP-Referer": "https://your-website.com", // opsional tapi disarankan
-        "X-Title": "Jason"
+        "Authorization": `Bearer ${apiKey}`
       },
       body: JSON.stringify({
         model: model,
@@ -133,7 +138,7 @@ async function fetchJasonReply(userInput) {
       })
     });
 
-    if (!response.ok) {
+    /*if (!response.ok) {
       if (response.status === 401 || response.status === 429) {
         if (currentKeyIndex < apiKeys.length - 1) {
             rotateApiKey();
@@ -144,7 +149,7 @@ async function fetchJasonReply(userInput) {
         }
       }
       throw new Error(`HTTP ${response.status}`);
-    }
+    }*/
 
     const data = await response.json();
     const reply = data.choices?.[0]?.message?.content || "(no reply)";

@@ -37,6 +37,7 @@
         <p id="subt">Press Start To Speak</p>
         <div class="popup-buttons">
           <button onclick="startListeningInPopup()">Start</button>
+          <button onclick="toggleMute()" id="muteBtt">Mute</button>
           <button onclick="closeMicPopup()">Close</button>
         </div>
       </div>
@@ -47,6 +48,7 @@
       <button id="edit-btn" onclick="editMemory()">Edit</button>
       <button onclick="exportMemory()">⬇ Export</button>
       <button onclick="document.getElementById('import-file').click()">⬆ Import</button>
+      <button onclick="rotateApiKey()">Next Key</button>
       <input type="file" id="import-file" style="display:none" onchange="importMemory(event)">
     </footer>
   </div>
