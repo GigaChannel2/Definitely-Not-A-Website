@@ -128,6 +128,12 @@ function submit() {
         case "pdil":
         case "fadhil":
             goTo("https://www.google.com/search?client=ms-android-xiaomi-rvo2&sca_esv=f689f82e8856ae16&sxsrf=AHTn8zodOsV_xeKmZwuN2VvBnA2OyL4nhg:1740943555600&q=s+tee&udm=2&fbs=ABzOT_BSNAwfaLO6lL4gBi3V_V3PQPlU4bhzkBMjtuVnbBJlspph4VFOvLSFhpFsz0u1rgu6EKGcKjAe4KkpgL67phj3JemwytjEZii_aoTYSZ5UyamQN4ROwCdwCcMUq73Bxi2kr_ZGJIao7D-lmeOKtyPfh8v4o-oIXb9rt-PUfxuRSpZwoyJJ9twb9r2ghl4ozkD2uhOSWzmNYBQQqnYSjep8HvQOVWxQrcRAvoy0ovbnLmlVFMs&sa=X&ved=2ahUKEwjKmdKRkOyLAxUHSmwGHZQTMqsQtKgLegQICxAB&biw=501&bih=998&dpr=2.16")
+            break;
+        case "kasane":
+        case "kasane teto":
+        case "teto":
+            goTo("https://youtu.be/dGn7nAN8dxI?si=1hFZg__6a_tOCbHU");
+            break;
     }
 }
 
@@ -135,7 +141,7 @@ function wrong() {
     password.style.borderColor = "red";
     txt.style.color = "red";
     txt.style.opacity = 1;
-    txt.innerHTML = "Wrong Password"
+    txt.innerHTML = "Wrong Password";
     sound.play();
     setTimeout(function() {
         txt.style.opacity = 0;
