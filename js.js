@@ -132,7 +132,7 @@ function submit() {
         case "kasane":
         case "kasane teto":
         case "teto":
-            goTo("https://youtu.be/dGn7nAN8dxI?si=1hFZg__6a_tOCbHU");
+            goTo("https://pin.it/w9r49zVFj");
             break;
     }
 }
