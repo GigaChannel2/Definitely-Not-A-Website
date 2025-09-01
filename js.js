@@ -119,7 +119,7 @@ function submit() {
         case "azzam arsyad":
         case "azzam":
         case "arsyad":
-            goTo("https://youtu.be/poa_QBvtIBA?si=6CcotfoXKYk6D04I");
+            goTo("https://solo.to/gigachannel");
             break;
         case "zidan":
         case "zaidan":
