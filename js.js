@@ -137,7 +137,7 @@ function submit() {
         case "miku":
         case "hatsune miku":
         case "hatsune":
-            goTo("https://youtu.be/3iUgKH8c7p4?t=95");
+            goTo("https://youtu.be/3iUgKH8c7p4?t=9");
     }
 }
 
