@@ -138,6 +138,10 @@ function submit() {
         case "hatsune miku":
         case "hatsune":
             goTo("https://youtube.com/shorts/2oa5WCUpwD8?si=b3w06K4bQYKGxtwG");
+        case "magical miku":
+            goTo("https://youtu.be/3iUgKH8c7p4?si=0CSLP3D9ve2NzHdK&t=96");
+        case "magical teto":
+            goTo("https://youtu.be/4e2XnoNEsdE?si=9h4i9rQDsN2VY22z&t=96");
     }
 }
 
