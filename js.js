@@ -134,6 +134,10 @@ function submit() {
         case "teto":
             goTo("https://pin.it/w9r49zVFj");
             break;
+        case "miku":
+        case "hatsune miku":
+        case "hatsune":
+            goTo("https://youtu.be/3iUgKH8c7p4?t=95");
     }
 }
 
