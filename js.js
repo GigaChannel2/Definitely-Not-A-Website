@@ -17,6 +17,12 @@ setTimeout(function() {
     password.value = password.value.toUpperCase();
 });*/
 
+password.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        submit();
+    }
+});
+
 function close_d() {
     dia.close();
 }
