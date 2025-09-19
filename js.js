@@ -151,6 +151,13 @@ function submit() {
         case "magical teto":
             goTo("https://youtu.be/4e2XnoNEsdE?si=9h4i9rQDsN2VY22z&t=96");
             break;
+        case "lost":
+            goTo("https://youtu.be/P89rxnT7lKw?si=Z-vKzUml3hu85FuQ");
+            break;
+        case "lancer":
+            goTo("https://youtu.be/oqVuzXQqFIE?si=boyuh4XFPASN7xkt");
+            break;
+        
     }
 }
 
