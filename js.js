@@ -72,7 +72,7 @@ function submit() {
             goTo("prisms/redprism.html");
             break;
         case "deva":
-            textCh("papua boi");
+            goTo("https://yubidotstore.wordpress.com");
             break;
         case "experiment 14":
             goTo("exp14.html");
@@ -157,7 +157,12 @@ function submit() {
         case "lancer":
             goTo("https://youtu.be/oqVuzXQqFIE?si=boyuh4XFPASN7xkt");
             break;
-        
+        case "deltarune":
+            textCh("Experiment 17");
+            break;
+        case "lionel":
+            textCh("Wild Monkey On The Loose!");
+            break;
     }
 }
 
