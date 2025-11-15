@@ -42,8 +42,11 @@ function submit() {
         default:
             wrong();
             break;
+        case "dess":
+            goTo(".html");
+            break;
         case "0704":
-            goTo("jason/jason.html")
+            goTo("jason/jason.html");
             break;
         case "donate":
             break;
