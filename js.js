@@ -43,7 +43,7 @@ function submit() {
             wrong();
             break;
         case "dess":
-            goTo(".html");
+            goTo("d.html");
             break;
         case "0704":
             goTo("jason/jason.html");
