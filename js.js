@@ -43,7 +43,10 @@ function submit() {
             wrong();
             break;
         case "richie":
-            goTo("richie.jpg")
+            goTo("https://raw.githubusercontent.com/GigaChannel2/Definitely-Not-A-Website/refs/heads/main/Richie.jpg");
+            break;
+        case "lionel":
+            textCh("monyet");
             break;
         case "0704":
             goTo("jason/jason.html")
