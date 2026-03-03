@@ -42,11 +42,11 @@ function submit() {
         default:
             wrong();
             break;
-        case "dess":
-            goTo("d.html");
+        case "richie":
+            goTo("richie.jpg")
             break;
         case "0704":
-            goTo("jason/jason.html");
+            goTo("jason/jason.html")
             break;
         case "donate":
             break;
@@ -75,7 +75,7 @@ function submit() {
             goTo("prisms/redprism.html");
             break;
         case "deva":
-            goTo("https://yubidotstore.wordpress.com");
+            textCh("papua boi");
             break;
         case "experiment 14":
             goTo("exp14.html");
@@ -153,18 +153,6 @@ function submit() {
             break;
         case "magical teto":
             goTo("https://youtu.be/4e2XnoNEsdE?si=9h4i9rQDsN2VY22z&t=96");
-            break;
-        case "lost":
-            goTo("https://youtu.be/P89rxnT7lKw?si=Z-vKzUml3hu85FuQ");
-            break;
-        case "lancer":
-            goTo("https://youtu.be/oqVuzXQqFIE?si=boyuh4XFPASN7xkt");
-            break;
-        case "deltarune":
-            textCh("Experiment 17");
-            break;
-        case "lionel":
-            textCh("Wild Monkey On The Loose!");
             break;
     }
 }
