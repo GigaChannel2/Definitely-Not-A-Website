@@ -10,9 +10,9 @@ on.play();
 setTimeout(function() {
     body.style.opacity = 1;
 }, 1);
-password.addEventListener("input", function(event) {
+/*password.addEventListener("input", function(event) {
     this.value = this.value.toUpperCase();
-});
+});*/
 /*password.addEventListener("input", ()=>{
     password.value = password.value.toUpperCase();
 });*/
@@ -41,6 +41,10 @@ function submit() {
     switch (pass){
         default:
             wrong();
+            break;
+        case "bocchi the rock":
+        case "bocchi":
+            goTo("https://id.pinterest.com/search/pins/?q=bocchi%20happy&rs=rs&source_id=rs_xYXVHrhD&top_pin_ids=327214729197769176&eq=&etslf=12075");
             break;
         case "34":
             goTo("https://gelbooru.com");

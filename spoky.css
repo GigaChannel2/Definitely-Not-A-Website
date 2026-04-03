@@ -60,7 +60,7 @@ dialog {
   border: 2px solid white;
 }
 #tbox {
-  /*text-transform: uppercase;*/
+  text-transform: uppercase;
   font-family: 'Source Code Pro';
   position: absolute;
   border: 2px solid aliceblue;
