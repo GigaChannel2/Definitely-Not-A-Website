@@ -42,6 +42,50 @@ function submit() {
         default:
             wrong();
             break;
+        case "34":
+            goTo("https://gelbooru.com");
+            break;
+        case "pedo":
+        case "pedophile":
+        case "child naked picture":
+            goTo("https://www.google.com/search?sca_esv=f4adb27807e92ea2&sxsrf=ANbL-n5vZ71ZGcHsr51u2kGEvg-1y1kw3w:1775213803220&q=nearest+therapy+sessiom&source=lnms&fbs=ADc_l-b9VKtw-PEOgpNtBvxtbTosleNvVAXweKdFkN1Lw1_WR-Tnhg_B3LC7uKNO3Vlrl6vjIhPVL-T2z0qicik9jtMCbRBKlo_-g0G209-i_ulTgCJ7142Yv48xOvOUlv_Ee7SGBksbWDfWj6Py3gjeY1lCcBOBLp_MbOmDEoCtHeaohSLTrcRexCjor9rk2yJ2KPIyp5L0cIUh1vtzcfDy7vsYJ8f3zO80g0DEms3JdhDP_KowyWI&sa=X&ved=2ahUKEwjevZDhwtGTAxVQSmwGHT6EIoUQ0pQJegQIDBAB&biw=1432&bih=776&dpr=1")
+            break;
+        case "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa":
+            textCh("AAAAAAAAAAAAAAAAA");
+            break;
+        case "hang tuah 3":
+            textCh("fuck you");
+            break;
+        case "ado":
+            goTo("https://www.google.com/search?sca_esv=f4adb27807e92ea2&sxsrf=ANbL-n4Pl7sqSEU62x78uxO_ZWkzdPy3ow:1775212960963&udm=2&fbs=ADc_l-ZfIPzv45NHkpmEx1uvAy1Y0jSl1hx3Xkmo2lpunDqItvmOdSOit7muIXZsXvpLBdHparcpJwBJPZvwUJitlUSAAObBERCLj5B1G_Ze_uTNZ95aI3CpUVrxpXF6D6vd12ppXIvKgVZFZyetuYmVWNYibTZHtKzdOF-wAWnuk0UgfuzcwdebN7r15sUTyRvJO_KY59v2uwAW5m9pUmPfDpo6NaYdig&q=shrimp+town&sa=X&ved=2ahUKEwjD8MDPv9GTAxU8xDgGHbJSNQEQtKgLegQIERAB&biw=1432&bih=776&dpr=1");
+            break;
+        case "yellow gates":
+            goTo("https://youtu.be/1-F1oCFPiIM?si=BVENZoNRDc1bwWFr");
+            break;
+        case "yellow gate":
+            goTo("https://drive.google.com/drive/folders/1Zv7eBKziKf5Rb_IhlFNFxMizdhn3lYwk");
+            break;
+        case "mayonnaise":
+        case "mayo":
+            goTo("https://www.youtube.com/@averylargemayo");
+            break;
+        case "omori":
+            textCh("Don't forget to forgive yourself.")
+            break;
+        case "gone":
+            goTo("vid/gone.mp4")
+        case "duet":
+            goTo("vid/duet.mp4");
+            break;
+        case "undertale":
+            textCh("How was the fall?");
+            break;
+        case "lancer":
+            goTo("https://deltarune.com/lancer");
+            break;
+        case "deltarune":
+            goTo("https://www.youtube.com/watch?v=VrPpnRRpux8");
+            break;
         case "richie":
             goTo("https://raw.githubusercontent.com/GigaChannel2/Definitely-Not-A-Website/refs/heads/main/Richie.jpg");
             break;
@@ -135,11 +179,11 @@ function submit() {
             break;
         case "zidan":
         case "zaidan":
-            goTo("https://youtu.be/lNZF_4DWJwo?si=MZPtF5QpDcqM5CLA");
+            goTo("https://www.google.com/search?sca_esv=e18616a4d636eb23&sxsrf=ANbL-n4GHcWe9dDiH1UPRgsJvT0u3af-Qw:1775212259552&udm=2&fbs=ADc_l-aNj6uplnfLbRFO_hsDAWa36jV53wIX7ZveR57-j40Yw0fvSHkrwH3Q13rTGipQZviqORSiEM6KkbfW7BEmLRh_XGKQd3yqLbBx5CDmeqjPOJsVNWIORl2J-xRxnzhARJNvEB_IeNxZEkCgNagbHVMAm0H3Hysat59yvfHbAw1zK8-K93b6mwXghECLa31W4gkp8OeRGkzrUqH3ETVKct31_0YpnA&q=bocchi+maid+outfit&sa=X&ved=2ahUKEwj-_YWBvdGTAxVcUGwGHSdBKwUQtKgLegQIFBAB");
             break;
         case "pdil":
         case "fadhil":
-            goTo("https://www.google.com/search?client=ms-android-xiaomi-rvo2&sca_esv=f689f82e8856ae16&sxsrf=AHTn8zodOsV_xeKmZwuN2VvBnA2OyL4nhg:1740943555600&q=s+tee&udm=2&fbs=ABzOT_BSNAwfaLO6lL4gBi3V_V3PQPlU4bhzkBMjtuVnbBJlspph4VFOvLSFhpFsz0u1rgu6EKGcKjAe4KkpgL67phj3JemwytjEZii_aoTYSZ5UyamQN4ROwCdwCcMUq73Bxi2kr_ZGJIao7D-lmeOKtyPfh8v4o-oIXb9rt-PUfxuRSpZwoyJJ9twb9r2ghl4ozkD2uhOSWzmNYBQQqnYSjep8HvQOVWxQrcRAvoy0ovbnLmlVFMs&sa=X&ved=2ahUKEwjKmdKRkOyLAxUHSmwGHZQTMqsQtKgLegQICxAB&biw=501&bih=998&dpr=2.16")
+            goTo("https://www.google.com/search?sca_esv=e18616a4d636eb23&udm=2&biw=1432&bih=776&sxsrf=ANbL-n57ZcOcCDeMy21dBJu0ZpMAZR5xaQ:1775212364296&q=seiun+sky&spell=1&sa=X&ved=2ahUKEwjdtf-yvdGTAxULSGwGHRNzJ6EQBSgAegQIChAB")
             break;
         case "kasane":
         case "kasane teto":
