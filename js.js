@@ -73,7 +73,8 @@ function submit() {
             textCh("Don't forget to forgive yourself.")
             break;
         case "gone":
-            goTo("vid/gone.mp4")
+            goTo("vid/gone.mp4");
+            break;
         case "duet":
             goTo("vid/duet.mp4");
             break;
