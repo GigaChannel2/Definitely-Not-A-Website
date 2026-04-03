@@ -10,9 +10,9 @@ on.play();
 setTimeout(function() {
     body.style.opacity = 1;
 }, 1);
-/*password.addEventListener("input", function(event) {
+password.addEventListener("input", function(event) {
     this.value = this.value.toUpperCase();
-});*/
+});
 /*password.addEventListener("input", ()=>{
     password.value = password.value.toUpperCase();
 });*/
