@@ -45,6 +45,12 @@ function submit() {
         case "34":
             goTo("https://gelbooru.com");
             break;
+        case "bad poem":
+            textCh("followed the Lost would forest children where\ntail. pointed grow, the the");
+            break;
+        case "poem":
+            textCh("Lost where the forest would grow,\nthe children followed the point tail, the poor children!");
+            break;
         case "pedo":
         case "pedophile":
         case "child naked picture":
