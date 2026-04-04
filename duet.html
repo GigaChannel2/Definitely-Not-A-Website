@@ -9,8 +9,10 @@
         body{
             background-color: black;
             color: white;
-            margin-top: 10%;
-            align-items: center;
+            display: flex;
+            justify-content: center; /* horizontal center */
+            align-items: center;     /* vertical center */
+            height: 100vh;           /* full screen height */
         }
         /* 
         video:-webkit-full-page-media {
@@ -25,14 +27,15 @@
         }*/
         video{
             /* margin: auto; */
+            width: 100%;
+            height: auto;
+            display: block;
         }
         .contain{
             /* display: grid;
             place-items: center; */
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 900px;
         }
     </style>
 </head>
