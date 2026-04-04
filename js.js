@@ -45,6 +45,9 @@ function submit() {
         case "findher":
             goTo("d.html");
             break;
+        case "white space":
+            goTo("whitespace.html")
+            break;
         case "bocchi the rock":
         case "bocchi":
             goTo("https://id.pinterest.com/search/pins/?q=bocchi%20happy&rs=rs&source_id=rs_xYXVHrhD&top_pin_ids=327214729197769176&eq=&etslf=12075");
