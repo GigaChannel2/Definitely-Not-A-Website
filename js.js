@@ -42,6 +42,9 @@ function submit() {
         default:
             wrong();
             break;
+        case "findher":
+            goTo("d.html");
+            break;
         case "bocchi the rock":
         case "bocchi":
             goTo("https://id.pinterest.com/search/pins/?q=bocchi%20happy&rs=rs&source_id=rs_xYXVHrhD&top_pin_ids=327214729197769176&eq=&etslf=12075");
@@ -83,10 +86,10 @@ function submit() {
             textCh("Don't forget to forgive yourself.")
             break;
         case "gone":
-            goTo("vid/gone.mp4");
+            goTo("gone.html");
             break;
         case "duet":
-            goTo("vid/duet.mp4");
+            goTo("duet.html");
             break;
         case "undertale":
             textCh("How was the fall?");

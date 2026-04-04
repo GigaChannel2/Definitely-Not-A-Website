@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Duet That Never Happened.</title>
+    <link rel="icon" href="icons/violin.webp">
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            margin-top: 10%;
+            align-items: center;
+        }
+        /* 
+        video:-webkit-full-page-media {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            max-height: 100%;
+            max-width: 100%;
+            margin: auto;
+        }*/
+        video{
+            /* margin: auto; */
+        }
+        .contain{
+            /* display: grid;
+            place-items: center; */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="contain">
+        <video autoplay name="media">
+            <source src="vid/duet.mp4" type="video/mp4">
+        </video>
+    </div>
+    <!-- <script>
+        setTimeout(playVid, 2000);
+        function playVid() {
+            document.getElementById("vid").muted = false;
+        }
+    </script> -->
+</body>
+</html>
