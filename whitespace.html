@@ -39,7 +39,7 @@
     </style>
 </head>
 <body>
-    <audio controls src="whitespace.m4a" loop id="aud">
+    <audio src="whitespace.m4a" loop id="aud">
     </audio>
     <div id="space">
         <h1>A place to survive, but not to live.</h1>
@@ -51,10 +51,13 @@
         const audio = document.getElementById("aud");
         let started = false;
         audio.play();
+        fadeIn(audio, 1, 8000);
+        boom();
+
         
-        document.addEventListener("click", startAudio);
-        document.addEventListener("keydown", startAudio);
-        document.addEventListener("scroll", startAudio);
+        // document.addEventListener("click", startAudio);
+        // document.addEventListener("keydown", startAudio);
+        // document.addEventListener("scroll", startAudio);
     
         function startAudio() {
             audio.muted = false;
@@ -64,9 +67,9 @@
             audio.play().then(() => {
                 fadeIn(audio, 1, 8000);
                 boom();
-                document.removeEventListener("click", startAudio);
-                document.removeEventListener("keydown", startAudio);
-                document.removeEventListener("scroll", startAudio);
+                // document.removeEventListener("click", startAudio);
+                // document.removeEventListener("keydown", startAudio);
+                // document.removeEventListener("scroll", startAudio);
             }).catch(() => {
                 started = false;
                 // kalau gagal, tunggu interaction berikutnya
