@@ -242,19 +242,19 @@ function close_warn() {
 }
 
 function wrong() {
-    password.style.borderColor = "red";
+    password.classList.add("wrong");
     txt.style.color = "red";
     txt.style.opacity = 1;
     txt.innerHTML = "Wrong Password";
     sound.play();
     setTimeout(function() {
         txt.style.opacity = 0;
-        password.style.borderColor = "aliceblue";
+        password.classList.remove("wrong");
         password.onfocus = function () {
-            this.style.borderColor = "limegreen";
+            password.classList.remove("wrong");
         }
         password.onblur = function() {
-            this.style.borderColor = "aliceblue";
+            password.classList.remove("wrong");
         }
     }, 500);
 }
