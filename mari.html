@@ -103,8 +103,10 @@
             mari.addEventListener("click", () => {
                 if (isCutscene) return;
                 clicked += 1;
-                console.log(clicked);
-                showDialog();
+                diaRan = getRndInteger(1, 4);
+                setTimeout(() => {
+                    showDialog();
+                }, 143);
                 isCutscene = true;
             
                 switch(clicked){
@@ -176,7 +178,6 @@
 
         function showDialog() {
             dialogue.classList.add("show");
-            diaRan = getRndInteger(1, 4);
             if (clicked <= 17) {
                 switch (diaRan) {
                     case 1:
