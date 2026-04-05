@@ -50,31 +50,37 @@
     <script>
         const audio = document.getElementById("aud");
         let started = false;
-        audio.play();
         fadeIn(audio, 1, 8000);
-        boom();
+        audio.play();
+        audio.play().then(() => {
+            fadeIn(audio, 1, 8000);
+            boom();
+            // document.removeEventListener("click", startAudio);
+            // document.removeEventListener("keydown", startAudio);
+            // document.removeEventListener("scroll", startAudio);
+            });
 
         
         // document.addEventListener("click", startAudio);
         // document.addEventListener("keydown", startAudio);
         // document.addEventListener("scroll", startAudio);
     
-        function startAudio() {
-            audio.muted = false;
-            audio.volume = 0;
-            started = true;
+        // function startAudio() {
+        //     audio.muted = false;
+        //     audio.volume = 0;
+        //     started = true;
 
-            audio.play().then(() => {
-                fadeIn(audio, 1, 8000);
-                boom();
-                // document.removeEventListener("click", startAudio);
-                // document.removeEventListener("keydown", startAudio);
-                // document.removeEventListener("scroll", startAudio);
-            }).catch(() => {
-                started = false;
-                // kalau gagal, tunggu interaction berikutnya
-            });
-        }
+        //     audio.play().then(() => {
+        //         fadeIn(audio, 1, 8000);
+        //         boom();
+        //         // document.removeEventListener("click", startAudio);
+        //         // document.removeEventListener("keydown", startAudio);
+        //         // document.removeEventListener("scroll", startAudio);
+        //     }).catch(() => {
+        //         started = false;
+        //         // kalau gagal, tunggu interaction berikutnya
+        //     });
+        // }
 
         function boom() {
             document.getElementById("space").style.opacity = 1;
