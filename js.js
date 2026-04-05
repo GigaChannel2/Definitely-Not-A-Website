@@ -42,11 +42,17 @@ function submit() {
         default:
             wrong();
             break;
+        case "mari?":
+            goTo("mari.html")
+            break;
         case "findher":
             goTo("d.html");
             break;
         case "white space":
-            goTo("whitespace.html")
+            goTo("whitespace.html");
+            break;
+        case "black space":
+            goTo("blackspace.html");
             break;
         case "bocchi the rock":
         case "bocchi":
@@ -64,7 +70,7 @@ function submit() {
         case "pedo":
         case "pedophile":
         case "child naked picture":
-            goTo("https://www.google.com/search?sca_esv=f4adb27807e92ea2&sxsrf=ANbL-n5vZ71ZGcHsr51u2kGEvg-1y1kw3w:1775213803220&q=nearest+therapy+sessiom&source=lnms&fbs=ADc_l-b9VKtw-PEOgpNtBvxtbTosleNvVAXweKdFkN1Lw1_WR-Tnhg_B3LC7uKNO3Vlrl6vjIhPVL-T2z0qicik9jtMCbRBKlo_-g0G209-i_ulTgCJ7142Yv48xOvOUlv_Ee7SGBksbWDfWj6Py3gjeY1lCcBOBLp_MbOmDEoCtHeaohSLTrcRexCjor9rk2yJ2KPIyp5L0cIUh1vtzcfDy7vsYJ8f3zO80g0DEms3JdhDP_KowyWI&sa=X&ved=2ahUKEwjevZDhwtGTAxVQSmwGHT6EIoUQ0pQJegQIDBAB&biw=1432&bih=776&dpr=1")
+            goTo("https://www.google.com/search?sca_esv=f4adb27807e92ea2&sxsrf=ANbL-n5vZ71ZGcHsr51u2kGEvg-1y1kw3w:1775213803220&q=nearest+therapy+sessiom&source=lnms&fbs=ADc_l-b9VKtw-PEOgpNtBvxtbTosleNvVAXweKdFkN1Lw1_WR-Tnhg_B3LC7uKNO3Vlrl6vjIhPVL-T2z0qicik9jtMCbRBKlo_-g0G209-i_ulTgCJ7142Yv48xOvOUlv_Ee7SGBksbWDfWj6Py3gjeY1lCcBOBLp_MbOmDEoCtHeaohSLTrcRexCjor9rk2yJ2KPIyp5L0cIUh1vtzcfDy7vsYJ8f3zO80g0DEms3JdhDP_KowyWI&sa=X&ved=2ahUKEwjevZDhwtGTAxVQSmwGHT6EIoUQ0pQJegQIDBAB&biw=1432&bih=776&dpr=1");
             break;
         case "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa":
             textCh("AAAAAAAAAAAAAAAAA");
@@ -86,7 +92,7 @@ function submit() {
             goTo("https://www.youtube.com/@averylargemayo");
             break;
         case "omori":
-            textCh("Don't forget to forgive yourself.")
+            textCh("Don't forget to forgive yourself.");
             break;
         case "gone":
             goTo("gone.html");
@@ -110,7 +116,7 @@ function submit() {
             textCh("monyet");
             break;
         case "0704":
-            goTo("jason/jason.html")
+            goTo("jason/jason.html");
             break;
         case "donate":
             break;
@@ -130,10 +136,10 @@ function submit() {
             goTo("prisms/orangeprism.html");
             break;
         case "yellow prism":
-            goTo("prisms/yellowprism.html")
+            goTo("prisms/yellowprism.html");
             break;
         case "blue prism":
-            goTo("prisms/blueprism.html")
+            goTo("prisms/blueprism.html");
             break;
         case "red prism":
             goTo("prisms/redprism.html");
@@ -199,6 +205,7 @@ function submit() {
             goTo("https://www.google.com/search?sca_esv=e18616a4d636eb23&sxsrf=ANbL-n4GHcWe9dDiH1UPRgsJvT0u3af-Qw:1775212259552&udm=2&fbs=ADc_l-aNj6uplnfLbRFO_hsDAWa36jV53wIX7ZveR57-j40Yw0fvSHkrwH3Q13rTGipQZviqORSiEM6KkbfW7BEmLRh_XGKQd3yqLbBx5CDmeqjPOJsVNWIORl2J-xRxnzhARJNvEB_IeNxZEkCgNagbHVMAm0H3Hysat59yvfHbAw1zK8-K93b6mwXghECLa31W4gkp8OeRGkzrUqH3ETVKct31_0YpnA&q=bocchi+maid+outfit&sa=X&ved=2ahUKEwj-_YWBvdGTAxVcUGwGHSdBKwUQtKgLegQIFBAB");
             break;
         case "pdil":
+        case "fadil":
         case "fadhil":
             goTo("https://www.google.com/search?sca_esv=e18616a4d636eb23&udm=2&biw=1432&bih=776&sxsrf=ANbL-n57ZcOcCDeMy21dBJu0ZpMAZR5xaQ:1775212364296&q=seiun+sky&spell=1&sa=X&ved=2ahUKEwjdtf-yvdGTAxULSGwGHRNzJ6EQBSgAegQIChAB")
             break;
@@ -243,7 +250,7 @@ function textCh(value) {
     txt.style.color = "white";
     txt.style.opacity = 1;
     txt.innerHTML = value;
-    setTimeout(function() {
+    let timer = setTimeout(function() {
         txt.style.opacity = 0;
     }, 3000);
 }
