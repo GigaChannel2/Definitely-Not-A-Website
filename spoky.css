@@ -80,6 +80,62 @@ dialog {
   height: 50px;
 }
 
+#diawarn {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: white;
+  width: 60%;
+  height: 40%;
+
+  color: #000;
+  text-align: center;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 0.5s ease;
+}
+
+#warn_cancel{
+  width: 150px;
+  height: 100px;
+  background-color: red;
+  right: 1%;
+  font-style: bold;
+  font-family: "Fredoka";
+  color: white;
+}
+
+#warn_continue{
+  width: 150px;
+  height: 100px;
+  background-color: #23ff23;
+  left: 1%;
+  font-style: bold;
+  font-family: fredoka;
+  color: black;
+}
+
+#diawarn.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* #diawarn:close{
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+#diawarn[open]{
+  opacity: 1;
+  transition: opacity 1s ease;
+} */
+
 #txt {
   color: green;
   opacity: 0;

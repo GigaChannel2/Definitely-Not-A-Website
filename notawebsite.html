@@ -6,6 +6,7 @@
     <link rel="icon" href="icons/laptop.png">
     <link rel="stylesheet" href="spoky.css">
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
   </head>
   <body id="body" onload="this.style.opacity = 1;">
     <audio autoplay id="on" src="turn_on.m4a"></audio>
@@ -15,6 +16,14 @@
       <input maxlength="143" placeholder="Enter Password" type="text" autocomplete="off" id="tbox">
       <button id="but" onclick="submit()"></button>
       <h1 id="txt"></h1>
+    </div>
+    <div id="warning">
+      <div id="diawarn">
+        <h1>Warning!</h1>
+        <h2>This page have content that might disturb you or make you feel uncomfortable.</h2>
+        <button id="warn_cancel" onclick="close_warn()">Cancel</button>
+        <button id="warn_continue" onclick="warn_con()">Continue</button>
+      </div>
     </div>
     <div id="donation">
       <dialog id="dia">

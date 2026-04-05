@@ -5,6 +5,7 @@ let sound = document.getElementById("aud");
 let on = document.getElementById("on");
 let body = document.getElementById("body");
 let dia = document.getElementById("dia");
+let diawarn = document.getElementById("diawarn");
 
 on.play();
 setTimeout(function() {
@@ -43,7 +44,7 @@ function submit() {
             wrong();
             break;
         case "mari?":
-            goTo("mari.html")
+            showwarn();
             break;
         case "findher":
             goTo("d.html");
@@ -226,6 +227,18 @@ function submit() {
             goTo("https://youtu.be/4e2XnoNEsdE?si=9h4i9rQDsN2VY22z&t=96");
             break;
     }
+}
+
+function showwarn() {
+    diawarn.classList.add("show");
+}
+
+function warn_con() {
+    goTo("mari.html")
+}
+
+function close_warn() {
+    diawarn.classList.remove("show");
 }
 
 function wrong() {
