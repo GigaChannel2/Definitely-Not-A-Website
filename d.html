@@ -21,6 +21,8 @@
 			font-size: 12px;
 			margin-left: 25px;
 			display: grid;
+		}
+		#container{
 			text-align: center;
 			justify-content: center;
 			align-items: center;
@@ -34,8 +36,10 @@
 </head>
 <body>
 	<audio id="aud" autoplay src="findher.m4a" loop></audio>
-	<h1> T H E </h1><h1> G I R L </h1><h1> L O S T </h1><h1> I T S </h1><h1> W A Y </h1>
-	<h1 id="scene"> 2 0 2 6 </h1>
+	<div id="container">
+		<h1> T H E </h1><h1> G I R L </h1><h1> L O S T </h1><h1> H E R </h1><h1> W A Y </h1>
+		<h1 id="scene"> 2 0 2 6 <br>S N E W </h1>
+	</div>
 	<script>
 		let aud = document.getElementById("aud");
 		aud.play();

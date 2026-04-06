@@ -43,6 +43,31 @@ function submit() {
         default:
             wrong();
             break;
+        case "pupue":
+            goTo("pupue.html");
+            break;
+        case "butt certificate":
+            textCh("So majestic... So beautiful...");
+            break;
+        case "starwalker":
+            textCh("Very                          Original");
+            break;
+        case "original":
+            textCh("            Starwalker");
+            break;
+        case "mahiro fan art":
+        case "mahiro baddie pic":
+        case "mahiro picture":
+            goTo("https://id.pinterest.com/search/pins/?q=mahiro%20oyama%20fan%20art&rs=ac&len=11&source_id=ac_kIQPgMLu&eq=mahiro%20oyama&etslf=5242");
+            break;
+        case "mahiro":
+        case "mahiro oyama":
+            textCh("Best Femboy imo");
+            break;
+        case "mihari":
+        case "mihari oyama":
+            textCh("Best Scientist (made the best femboy)");
+            break;
         case "mari?":
             showwarn();
             break;
@@ -63,10 +88,10 @@ function submit() {
             goTo("https://gelbooru.com");
             break;
         case "bad poem":
-            textCh("followed the Lost would forest children where\ntail. pointed grow, the the");
+            textCh("followed the Lost would forest children where\ntail. pointed grow, the the. The poor children!");
             break;
         case "poem":
-            textCh("Lost where the forest would grow,\nthe children followed the point tail, the poor children!");
+            textCh("Lost where the forest would grow,\nthe children followed the pointed tail. The poor children!");
             break;
         case "pedo":
         case "pedophile":
@@ -246,6 +271,7 @@ function wrong() {
     txt.style.color = "red";
     txt.style.opacity = 1;
     txt.innerHTML = "Wrong Password";
+    txt.style.fontFamily = "Source Code Pro";
     sound.play();
     setTimeout(function() {
         txt.style.opacity = 0;
@@ -263,6 +289,11 @@ function textCh(value) {
     txt.style.color = "white";
     txt.style.opacity = 1;
     txt.innerHTML = value;
+    if (pass == "butt certificate") {
+        txt.style.fontFamily = "omori";
+    } else {
+        txt.style.fontFamily = "Source Code Pro";
+    }
     let timer = setTimeout(function() {
         txt.style.opacity = 0;
     }, 3000);
