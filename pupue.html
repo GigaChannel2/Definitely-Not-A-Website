@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pupue</title>
+    <style>
+        body{
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 98vh;
+        }
+        video{
+            pointer-events: none;
+            height: none;
+            width: 100%;
+            display: block;
+            visibility: hidden;
+            position: relative;
+        }
+        #img{
+            position: absolute;
+            text-align: center;
+            align-items: center;
+            justify-self: center;
+            z-index: 1;
+        }
+        #contain{
+            display: flex;
+            width: 90%;
+            max-width: 900px;
+        }
+    </style>
+</head>
+<body>
+    <div id="contain">
+        <img id="img" src="luckystar.jpg" alt="">
+        <video id="vid" loop>
+            <source src="vid/Konata_Izumi.mp4" type="video/mp4">
+        </video>
+    </div>
+    <script>
+        document.getElementById("img").addEventListener("click", () => {
+            document.getElementById("vid").style.visibility = "visible";
+            document.getElementById("vid").play();
+            document.getElementById("img").style.visibility = "hidden";
+        });
+    </script>
+</body>
+</html>
