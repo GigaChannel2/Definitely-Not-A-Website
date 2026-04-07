@@ -6,6 +6,7 @@ let on = document.getElementById("on");
 let body = document.getElementById("body");
 let dia = document.getElementById("dia");
 let diawarn = document.getElementById("diawarn");
+let isTimer = false;
 
 on.play();
 setTimeout(function() {
@@ -17,6 +18,7 @@ setTimeout(function() {
 /*password.addEventListener("input", ()=>{
     password.value = password.value.toUpperCase();
 });*/
+
 
 password.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
@@ -42,6 +44,9 @@ function submit() {
     switch (pass){
         default:
             wrong();
+            break;
+        case "red space":
+            goTo("redspace.html");
             break;
         case "pupue":
             goTo("pupue.html");
@@ -267,36 +272,52 @@ function close_warn() {
 }
 
 function wrong() {
-    password.classList.add("wrong");
-    txt.style.color = "red";
-    txt.style.opacity = 1;
-    txt.innerHTML = "Wrong Password";
-    txt.style.fontFamily = "Source Code Pro";
-    sound.play();
-    setTimeout(function() {
-        txt.style.opacity = 0;
-        password.classList.remove("wrong");
-        password.onfocus = function () {
+    if (!isTimer) {
+        isTimer = true;
+        password.classList.add("wrong");
+        txt.style.color = "red";
+        txt.style.opacity = 1;
+        txt.innerHTML = "Wrong Password";
+        txt.style.fontFamily = "Source Code Pro";
+        txt.style.visibility = "visible";
+        sound.play();
+        setTimeout(function() {
+            txt.style.opacity = 0;
             password.classList.remove("wrong");
-        }
-        password.onblur = function() {
-            password.classList.remove("wrong");
-        }
-    }, 500);
+            setTimeout(function() {
+                txt.style.visibility = "hidden";
+                isTimer = false;
+            }, 500);
+            password.onfocus = function () {
+                password.classList.remove("wrong");
+            }
+            password.onblur = function() {
+                password.classList.remove("wrong");
+            }
+        }, 500);
+    }
 }
 
 function textCh(value) {
-    txt.style.color = "white";
-    txt.style.opacity = 1;
-    txt.innerHTML = value;
-    if (pass == "butt certificate") {
-        txt.style.fontFamily = "omori";
-    } else {
-        txt.style.fontFamily = "Source Code Pro";
+    if(!isTimer) {
+        isTimer = true;
+        txt.style.color = "white";
+        txt.style.opacity = 1;
+        txt.innerHTML = value;
+        txt.style.visibility = "visible";
+        if (pass == "butt certificate") {
+            txt.style.fontFamily = "omori";
+        } else {
+            txt.style.fontFamily = "Source Code Pro";
+        }
+        let timer = setTimeout(function() {
+            txt.style.opacity = 0;
+            setTimeout(function() {
+                txt.style.visibility = "hidden";
+                isTimer = false;
+            }, 500);
+        }, 3000);
     }
-    let timer = setTimeout(function() {
-        txt.style.opacity = 0;
-    }, 3000);
 }
 
 function goTo(value) {

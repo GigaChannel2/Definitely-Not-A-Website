@@ -83,7 +83,7 @@ dialog {
 }
 #tbox {
   text-transform: uppercase;
-  transition: border 0.6s ease;
+  transition: all 0.6s ease;
   font-family: 'Source Code Pro';
   position: absolute;
   border: 1px solid aliceblue;
@@ -95,7 +95,6 @@ dialog {
   outline: none;
   width: 300px;
   height: 50px;
-  transition: background-color 0.6s ease;
   display:grid;
   gap: 10px;
 }
@@ -108,16 +107,14 @@ dialog {
 }
 
 #tbox.wrong:focus{
-  transition: border 0.6s ease;
-  transition: background-color 0.6s ease;
+  transition: all 0.6s ease;
   border: 4px solid red;
   background-color: red;
 }
 
 #tbox:focus {
   border: 4px solid aliceblue;
-  transition: background-color 0.6s ease;
-  transition: border 0.6s ease;
+  transition: all 0.6s ease;
 }
 
 #diawarn {
@@ -201,6 +198,7 @@ dialog {
   color: green;
   opacity: 0;
   transition: opacity 0.4s ease-in-out;
+  visibility: hidden;
 }
 #comp {
   opacity: 0.4;
