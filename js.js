@@ -45,6 +45,9 @@ function submit() {
         default:
             wrong();
             break;
+        case "playing forever":
+            goTo("playingforever.html");
+            break;
         case "red space":
             goTo("redspace.html");
             break;

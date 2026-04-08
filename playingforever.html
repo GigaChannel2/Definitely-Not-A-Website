@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0", user-scalable="no">
+    <title>Playing Forever.</title>
+    <style>
+        body{
+            background: no-repeat linear-gradient(180deg,rgba(175, 138, 232, 1) 0%, rgba(155, 110, 226, 1) 48%, rgba(128, 70, 218, 1) 71%, rgba(87, 11, 206, 1) 100%);
+            background-size: 100% 100%;
+            background-attachment: fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+
+        }
+        #container{
+            width: 100%;
+            max-width: 800px;
+            background: url("sleepover.png") no-repeat center;
+            background-size: contain;
+        }
+        #frame{
+            position: relative;
+            width: 100%;
+            z-index: 1;
+            height: 100%;
+        }
+        #sleepover{
+            z-index: -1;
+            width: 100%;
+            height: auto;
+            display:block;
+        }
+        #bg2{
+            background-color: #570BCE;
+        }
+    </style>
+</head>
+<body>
+    <audio src="playingforever.m4a" autoplay loop></audio>
+    <div id="container">
+        <img src="sleepover_frame.png" alt="" id="frame">
+    </div>
+    <div id="bg2"></div>
+</body>
+</html>
