@@ -22,26 +22,29 @@
             color: #FFFFFF;
             user-select: none;
             display: block;
+            position: relative;
         }
         #container{
-            width: 100%;
-            max-width: 800px;
-            background: url("sleepover.png") no-repeat center;
-            background-size: contain;
-        }
-        #frame{
+            transition: opacity 6s ease;
             position: relative;
             width: 100%;
-            z-index: 1;
+            max-width: 800px;
+            opacity: 0;
+            /*background: url("sleepover.png") no-repeat center;
+            background-size: contain; */
+        }
+        #frame{
+            position: absolute;
+            width: 100%;
             height: auto;
             display: block;
             padding-bottom: 10%;
+            z-index: 2;
         }
         #sleepover{
-            z-index: -1;
+            position: absolute;
             width: 100%;
-            height: auto;
-            display:block;
+            z-index: 1;
         }
         #bg2{
             background-color: #570BCE;
@@ -56,8 +59,13 @@
     <audio src="playingforever.m4a" autoplay loop></audio>
     <div id="container">
         <h1 id="txt">Lost At A Sleepover.</h1>
+        <img src="sleepover.png" alt="" id="sleepover">
         <img src="sleepover_frame.png" alt="" id="frame">
     </div>
-    <div id="bg2"></div>
+    <script>
+        setTimeout(() => {
+            document.getElementById("container").style.opacity = 1;
+        }, 143)
+    </script>
 </body>
 </html>
