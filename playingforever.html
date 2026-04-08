@@ -16,6 +16,13 @@
             margin: 0;
 
         }
+        #txt{
+            font-family: omori;
+            text-align: center;
+            color: #FFFFFF;
+            user-select: none;
+            display: block;
+        }
         #container{
             width: 100%;
             max-width: 800px;
@@ -26,7 +33,9 @@
             position: relative;
             width: 100%;
             z-index: 1;
-            height: 100%;
+            height: auto;
+            display: block;
+            padding-bottom: 10%;
         }
         #sleepover{
             z-index: -1;
@@ -37,11 +46,16 @@
         #bg2{
             background-color: #570BCE;
         }
+        @font-face {
+            font-family: omori;
+            src: url("OMORI_GAME2.ttf");
+        }
     </style>
 </head>
 <body>
     <audio src="playingforever.m4a" autoplay loop></audio>
     <div id="container">
+        <h1 id="txt">Lost At A Sleepover.</h1>
         <img src="sleepover_frame.png" alt="" id="frame">
     </div>
     <div id="bg2"></div>
