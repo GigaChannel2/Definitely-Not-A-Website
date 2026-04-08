@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome To... Red Space?</title>
-    <link rel="icons" href="icons/redspace.png">
+    <link rel="icon" href="icons/redspace.png">
     <style>
         body{
             background: url("redspace_bg.webp") repeat;
@@ -36,7 +36,7 @@
     </style>
 </head>
 <body id="bod">
-    <audio src="listening.m4a" autoplay loop></audio>
+    <audio id="aud" src="listening.m4a" autoplay loop></audio>
     <div id="bg"></div>
     <div id="container">
         <img id="hands" src="red_hands.webp" alt="">
@@ -44,6 +44,8 @@
     <script>
         let x = 0;
         let y = 0;
+
+        document.getElementById("aud").volume = 2;
 
         function loop() {
             x += -1;
