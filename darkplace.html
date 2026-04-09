@@ -27,7 +27,7 @@
             height: auto;
             pointer-events: none;
             opacity: 0;
-            transition: opacity 5s ease;
+            transition: opacity 6s ease;
             visibility: hidden;
         }
     </style>
@@ -43,23 +43,22 @@
         let mouseY = 0;
         let x1 = 0, y1 = 0;
         let x2 = 0, y2 = 0;
-        let light = false;
+        let yeslight = false;
         
         setTimeout(() => {
+            light();
             light1.style.visibility = "visible";
             light2.style.visibility = "visible";
-            light = true;
             light1.style.opacity = 1;
             light2.style.opacity = 1;
-        }, 1000)
+        }, 60000)
 
         document.addEventListener("mousemove", (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
         });
-
+        
         function light() {
-            if (!light) return;
             const offsetX = light1.offsetWidth / 2;
             const offsetY = light1.offsetHeight / 2;
 
@@ -74,7 +73,6 @@
 
             requestAnimationFrame(light);
         }
-        light();
     </script>
 </body>
 </html>
