@@ -45,6 +45,9 @@ function submit() {
         default:
             wrong();
             break;
+        case "trinity of shadows":
+            goTo("trinity.html");
+            break;
         case "dark place":
             goTo("darkplace.html");
             break;
