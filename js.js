@@ -45,6 +45,15 @@ function submit() {
         default:
             wrong();
             break;
+        case "cgfzc3dvcmq=":
+            goTo("event/cGFzc3dvcmQ=.html");
+            break;
+        case "3415":
+            goTo("event/3145.html");
+            break;
+        case "event":
+            goTo("event/QkxBU1BIRU1Z.json");
+            break;
         case "trinity of shadows":
             goTo("trinity.html");
             break;
