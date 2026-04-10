@@ -45,6 +45,9 @@ function submit() {
         default:
             wrong();
             break;
+        case "field of hopes and dreams":
+            goTo("fohad.html");
+            break;
         case "cgfzc3dvcmq=":
             goTo("event/cGFzc3dvcmQ=.html");
             break;
