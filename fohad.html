@@ -57,6 +57,10 @@
 
         let charX = 300;
         let charY = 300;
+        let borderU = 0;
+        let borderD = 960;
+        let borderL = 0;
+        let borderR = 980;
         let speed = 3;
         let targetSpeed = 3;
         let moving = false;
@@ -86,7 +90,7 @@
         }
 
         function update() {
-            targetSpeed = keys["shift"] ? 3.5 : 1.5;
+            targetSpeed = keys["shift"] || keys["x"] ? 3.5 : 1.5;
 
             speed += (targetSpeed - speed) * 0.1;
 
@@ -116,19 +120,19 @@
                     case "left":
                         if (keys["arrowup"]) {
                             setSprite(
-                                keys["shift"]
+                                keys["shift"] || keys["x"]
                                     ? "img/kris/kris_dw_up_run.gif"
                                     : "img/kris/kris_dw_up.gif"
                             );
                         } else if (keys["arrowdown"]) {
                             setSprite(
-                                keys["shift"]
+                                keys["shift"] || keys["x"]
                                     ? "img/kris/kris_dw_down_run.gif"
                                     : "img/kris/kris_dw_down.gif"
                             );
                         } else {
                             setSprite(
-                                keys["shift"]
+                                keys["shift"] || keys["x"]
                                     ? "img/kris/kris_dw_left_run.gif"
                                     : "img/kris/kris_dw_left.gif"
                             );
@@ -137,19 +141,19 @@
                     case "right":
                         if (keys["arrowup"]) {
                             setSprite(
-                                keys["shift"]
+                                keys["shift"] || keys["x"]
                                     ? "img/kris/kris_dw_up_run.gif"
                                     : "img/kris/kris_dw_up.gif"
                             );
                         } else if (keys["arrowdown"]) {
                             setSprite(
-                                keys["shift"]
+                                keys["shift"] || keys["x"]
                                     ? "img/kris/kris_dw_down_run.gif"
                                     : "img/kris/kris_dw_down.gif"
                             );
                         } else {
                             setSprite(
-                                keys["shift"]
+                                keys["shift"] || keys["x"]
                                     ? "img/kris/kris_dw_right_run.gif"
                                     : "img/kris/kris_dw_right.gif"
                             );
@@ -157,14 +161,14 @@
                         break;
                     case "up":
                         setSprite(
-                            keys["shift"]
+                            keys["shift"] || keys["x"]
                                 ? "img/kris/kris_dw_up_run.gif"
                                 : "img/kris/kris_dw_up.gif"
                         );
                         break;
                     case "down":
                         setSprite(
-                            keys["shift"]
+                            keys["shift"] || keys["x"]
                                 ? "img/kris/kris_dw_down_run.gif"
                                 : "img/kris/kris_dw_down.gif"
                         );
@@ -190,8 +194,10 @@
             camX = charX * 3 - window.innerWidth / 2;
             camY = charY * 3 - window.innerHeight / 2;
 
-            if (charX <= 0) charX = 0;
-            if (charY <= 0) charY = 0;
+            if (charX <= borderL) charX = borderL;
+            if (charY <= borderU) charY = borderU;
+            if (charX >= borderR) charX = borderR;
+            if (charY >= borderD) charY = borderD;
 
             char.style.left = charX + "px";
             char.style.top = charY + "px";
