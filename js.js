@@ -6,6 +6,7 @@ let on = document.getElementById("on");
 let body = document.getElementById("body");
 let dia = document.getElementById("dia");
 let diawarn = document.getElementById("diawarn");
+let sfx = document.getElementById("sfx");
 let isTimer = false;
 
 on.play();
@@ -44,6 +45,12 @@ function submit() {
     switch (pass){
         default:
             wrong();
+            break;
+        case "kuyashi":
+            playSfx("sfx/kuyashi.mp3");
+            break;
+        case "yatta":
+            playSfx("sfx/yatta.mp3");
             break;
         case "field of hopes and dreams":
             goTo("fohad.html");
@@ -278,6 +285,11 @@ function submit() {
             goTo("https://youtu.be/4e2XnoNEsdE?si=9h4i9rQDsN2VY22z&t=96");
             break;
     }
+}
+
+function playSfx(src) {
+    sfx.src = src;
+    sfx.play();
 }
 
 function showwarn() {
