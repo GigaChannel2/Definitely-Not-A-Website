@@ -47,7 +47,8 @@ function submit() {
             wrong();
             break;
         case "6524":
-            goTo("event/6524/web/c2l4IGZpdmUgdHdvIGZvdXI=.xml")
+            goTo("event/6524/web/c2l4IGZpdmUgdHdvIGZvdXI=.xml");
+            break;
         case "kuyashi":
             playSfx("sfx/kuyashi.mp3");
             break;
