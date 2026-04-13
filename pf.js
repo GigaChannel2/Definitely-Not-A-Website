@@ -1,5 +1,5 @@
 let txt = document.getElementById("txt");
-let speed = 143000;
+let speed = 14300;
 let changed = 0;
 document.getElementById("container").style.opacity = 1;
 txt.textContent = "I loved you";
