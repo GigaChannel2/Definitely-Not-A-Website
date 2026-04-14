@@ -46,6 +46,9 @@ function submit() {
         default:
             wrong();
             break;
+        case "unyah":
+            playSfx("sfx/unyah.mp3");
+            break;
         case "therapy session":
         case "therapy":
         case "therapy?":
