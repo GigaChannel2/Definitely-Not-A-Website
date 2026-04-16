@@ -22,35 +22,38 @@
             height: 100%;
             position: absolute;
             z-index: 5;
+            pointer-events: none;
         }
         #dialogue{
             position: fixed;
             width: 300px;
-            height: 50px;
             max-width: 500px;
-            max-height: 600px;
+
+            min-height: 50px;
+            max-height: 300px;
             left: 50%;
-            bottom: -2000px;
+            bottom: -1000px;
+
             padding: 25px;
             transform: translateX(-50%);
+
             background-color: black;
             border: solid white 5px;
             z-index: 6;
             color: white;
-            transition: all 1s linear;
+            transition: all 0.5s linear;
+            overflow: hidden;
         }
         #dialogue.show{
-            transition: all 1s linear;
+            transition: all 0.5s linear;
             bottom: 10vh;
         }
         #dia_text{
             font-family: "8bit";
             white-space: normal;
             font-size: 20px;
-        }
-        .typing{
-            animation: typing 3s steps(30, end);
-            white-space: normal;
+            white-space: pre-warp;
+            display: block;
         }
         #viewport{
             width: 100vw;
@@ -63,12 +66,12 @@
         }
         #char{
             position: absolute;
-            width: 100%;
-            height: 100%;
+            width: 19px;
+            height: 38px;
             left: 500px;
             top: 500px;
             z-index: 2;
-            transform-origin: center;
+            pointer-events: none;
         }
         #map{
             width: 564px;
@@ -83,6 +86,7 @@
             height: 100%;
             position: absolute;
             z-index: 0;
+            pointer-events: none;
         }
 
         @keyframes typing {
@@ -105,6 +109,8 @@
         </div>
     </div>
     <script>
+        let debug = true;
+
         let camX = 0;
         let camY = 0;
 
@@ -134,29 +140,56 @@
         let isTyping = false;
         let fullText = "";
         let isDialogue = false;
+        let insideZone = false;
         
         const world = document.getElementById("world");
         const keys = {};
         const char = document.getElementById("char");
-        const interactZone1 = {
+        const diaZone1 = {
             x: 48,
             y: 88,
-            width: 20,
-            height: 20
+            width: 40,
+            height: 50
+        };
+        const diaZone2 = {
+            x: 108,
+            y: 88,
+            width: 40,
+            height: 50
+        };
+        const diaZone3 = {
+            x: 277,
+            y: 148,
+            width: 40,
+            height: 50
         };
         const dialogueLines = [
-            "*There's an image of a person.\nWith a text full of his sins",
+            "*There's a picture of a person.\nWith a text full of his sins",
             "*All of them written with blood.",
             "*..."
         ];
+        const dialogueLines2 = [
+            "*It's all drawn on the wall",
+            "*Looks like those character that will show up in your fever dream.",
+            "*...Are you dreaming right now?"
+        ];
+        const dialogueLines3 = [
+            "*There are three person drawn on the wall.",
+            "*Each character has a name, Merry, Hiroi, And #####",
+            "*...Turns out it's just one person, with different personality, or self.",
+            "*Merry was supposed to keep his manliness away, and treat themself as the feminime side.",
+            "*Hiroi was just an average social battery for the person, to keep his biggest fear.",
+            "*And his true self, #####, was a shy but kind person, sometimes kinda dumb.",
+            "*...wait, is that me?"
+        ];
+
+        let activeDialogue = [];
+        let fullSen = false;
+        let typingID = 0;
 
         document.getElementById("map").style.transform = `scale(${camSize})`;
 
         setSprite("img/kris/kris_dw_left.png");
-
-        setInterval(() => {
-            console.log("X: " + charX + "\nY: " + charY);
-        }, 1000);
 
         document.addEventListener("keydown", (e) => {
             keys[e.key.toLowerCase()] = true;
@@ -172,15 +205,12 @@
                 }
 
                 if (isTyping) {
-                    dia_text.textContent = fullText;
-                    isTyping = false;
-                    typeText(dialogueLines[currentLine], true);
                     return;
                 } else {
                     currentLine++;
 
-                    if (currentLine < dialogueLines.length) {
-                        typeText(dialogueLines[currentLine], false);
+                    if (currentLine < activeDialogue.length) {
+                        typeText(activeDialogue[currentLine], false);
                     } else {
                         isDialogue = false;
                         dia.classList.remove("show");
@@ -211,22 +241,29 @@
         }
 
         function typeText(text, skip) {
+            typingID++;
             dia_text.textContent = "";
             currentText = "";
             fullText = text;
             isTyping = true;
 
+            const currentID = typingID;
             let i = 0;
 
             function type() {
+                if (currentID !== typingID) return;
+
                 if (i < text.length) {
+                    if (fullSen) {
+                        i = text.length;
+                        dia_text.textContent = text;
+                        isTyping = false;
+                        return;
+                    }
                     currentText += text[i];
                     dia_text.textContent = currentText;
                     i++;
                     setTimeout(type, 30); // speed
-                    if (skip) {
-                        i = text.length -= 1;
-                    }
                 } else {
                     isTyping = false;
                 }
@@ -235,12 +272,19 @@
             type();
         }
         function interact() {
-            if (isInsideZone(charX, charY, interactZone1)) {
-                dia.classList.add("show");
-                isDialogue = true;
-                currentLine = 0;
-                typeText(dialogueLines[currentLine]);
+            if (isInsideZone(charX, charY, diaZone1)) {
+                activeDialogue = dialogueLines;
+            } else if (isInsideZone(charX, charY, diaZone2)) {
+                activeDialogue = dialogueLines2;
+            } else if (isInsideZone(charX, charY, diaZone3)) {
+                activeDialogue = dialogueLines3;
+            } else {
+                return;
             }
+            dia.classList.add("show");
+            isDialogue = true;
+            currentLine = 0;
+            typeText(activeDialogue[currentLine]);
         }
 
         function finishDia() {
@@ -248,17 +292,26 @@
                 dia_text.classList.remove("typing");
                 isDialogue = false;
                 dia.classList.remove("show");
-                console.log("finishDia");
+                if (debug) console.log("finishDia");
             }
         }
-        
-        setInterval(() => {
-            if (isInsideZone(charX, charY, interactZone1)) {
-                console.log("inBox");
-            }
-        }, 500);
+
+        if (debug) {
+            setInterval(() => {
+                console.log("X: " + charX + "\nY: " + charY + "\nisInsideZone = " + isInsideZone(charX, charY, diaZone1));
+                if (isInsideZone(charX, charY, diaZone1)) {
+                    console.log("inBox");
+                }
+            }, 1000);
+        }
         function update() {
             targetSpeed = keys["shift"] || keys["x"] ? 3.5 : 1.5;
+
+            if (isInsideZone(charX, charY, diaZone1)) {
+                insideZone = true;
+            } else {
+                insideZone = false;
+            }
 
             if (doorOpen) {
                 door.style.visibility = "visible";
@@ -374,11 +427,13 @@
                 }
             }
 
-            if (charY <= 237.4568985956634) {
-                char.style.opacity = 0;
-            } else if (charY >= 263.98454661078637) {
-                char.style.opacity = 1;
-            }
+            const fadeStart = 230;
+            const fadeEnd = 266;
+
+            let opacity = (charY - fadeStart) / (fadeEnd - fadeStart);
+
+            opacity = Math.max(0, Math.min(1, opacity));
+            char.style.opacity = opacity;
 
             //Borders
             if (charX <= 0) {
