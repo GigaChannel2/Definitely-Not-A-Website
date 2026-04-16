@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapy Session</title>
+    <style>
+        @font-face {
+            font-family: "8bit";
+            src: url("big-shot.ttf");
+        }
+        body{
+            margin: 0;
+            image-rendering: pixelated;
+            background-color: black;
+        }
+        body::-webkit-scrollbar{
+            display: none;
+        }
+        #door{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 5;
+        }
+        #dialogue{
+            position: fixed;
+            width: 300px;
+            height: 50px;
+            max-width: 500px;
+            max-height: 600px;
+            left: 50%;
+            bottom: -2000px;
+            padding: 25px;
+            transform: translateX(-50%);
+            background-color: black;
+            border: solid white 5px;
+            z-index: 6;
+            color: white;
+            transition: all 1s linear;
+        }
+        #dialogue.show{
+            transition: all 1s linear;
+            bottom: 10vh;
+        }
+        #dia_text{
+            font-family: "8bit";
+            white-space: normal;
+            font-size: 20px;
+        }
+        .typing{
+            animation: typing 3s steps(30, end);
+            white-space: normal;
+        }
+        #viewport{
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: absolute;
+        }
+        #world{
+            position: absolute;
+        }
+        #char{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 500px;
+            top: 500px;
+            z-index: 2;
+            transform-origin: center;
+        }
+        #map{
+            width: 564px;
+            height: 400px;
+            left: 0px;
+            top: 0px;
+            transform: scale(3);
+            transform-origin: top left;
+        }
+        #session{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 0;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+    </style>
+</head>
+<body>
+    <audio src="man2.m4a" autoplay loop></audio>
+    
+    <div id="viewport">
+        <div id="dialogue"><a id="dia_text">This is a dialogue.</a></div>
+        <div id="world">
+            <div id="map">
+                <div id="char"><img src="img/kris/kris_dw_left.png" alt="" id="char_sprite"></div>
+                <img src="img/therapy_door_open.png" alt="" id="door">
+                <img src="img/therapy.png" alt="" id="session">
+            </div>
+        </div>
+    </div>
+    <script>
+        let camX = 0;
+        let camY = 0;
+
+        let charX = 250;
+        let charY = 300;
+        let speed = 3;
+        let targetSpeed = 3;
+        let moving = false;
+        let camSize = 3;
+
+        let bordU = false;
+        let bordD = false;
+        let bordL = false;
+        let bordR = false;
+
+        let currentSprite = "";
+        let sprite = document.getElementById("char_sprite");
+        let door = document.getElementById("door");
+        let session = document.getElementById("session");
+        let dia = document.getElementById("dialogue");
+        let dia_text = document.getElementById("dia_text");
+        let doorOpen = false;
+        let direction = "down";
+
+        let currentLine = 0;
+        let currentText = "";
+        let isTyping = false;
+        let fullText = "";
+        let isDialogue = false;
+        
+        const world = document.getElementById("world");
+        const keys = {};
+        const char = document.getElementById("char");
+        const interactZone1 = {
+            x: 48,
+            y: 88,
+            width: 20,
+            height: 20
+        };
+        const dialogueLines = [
+            "*There's an image of a person.\nWith a text full of his sins",
+            "*All of them written with blood.",
+            "*..."
+        ];
+
+        document.getElementById("map").style.transform = `scale(${camSize})`;
+
+        setSprite("img/kris/kris_dw_left.png");
+
+        setInterval(() => {
+            console.log("X: " + charX + "\nY: " + charY);
+        }, 1000);
+
+        document.addEventListener("keydown", (e) => {
+            keys[e.key.toLowerCase()] = true;
+            if (["arrowup","arrowdown","arrowleft","arrowright"].includes(e.key.toLowerCase())) {
+                e.preventDefault();
+            }
+
+            if (e.key.toLowerCase() === "z" || e.key === "Enter") {
+
+                if (!isDialogue) {
+                    interact();
+                    return;
+                }
+
+                if (isTyping) {
+                    dia_text.textContent = fullText;
+                    isTyping = false;
+                    typeText(dialogueLines[currentLine], true);
+                    return;
+                } else {
+                    currentLine++;
+
+                    if (currentLine < dialogueLines.length) {
+                        typeText(dialogueLines[currentLine], false);
+                    } else {
+                        isDialogue = false;
+                        dia.classList.remove("show");
+                    }
+                }
+            }
+        });
+
+        document.addEventListener("keyup", (e) => {
+            keys[e.key.toLowerCase()] = false;
+            moving = false;
+        });
+        
+        function setSprite(sprt) {
+            if (currentSprite !== sprt) {
+                sprite.src = sprt;
+                currentSprite = sprt;
+            }
+        }
+
+        function isInsideZone(px, py, zone) {
+            return (
+                px >= zone.x &&
+                px <= zone.x + zone.width &&
+                py >= zone.y &&
+                py <= zone.y + zone.height
+            );
+        }
+
+        function typeText(text, skip) {
+            dia_text.textContent = "";
+            currentText = "";
+            fullText = text;
+            isTyping = true;
+
+            let i = 0;
+
+            function type() {
+                if (i < text.length) {
+                    currentText += text[i];
+                    dia_text.textContent = currentText;
+                    i++;
+                    setTimeout(type, 30); // speed
+                    if (skip) {
+                        i = text.length -= 1;
+                    }
+                } else {
+                    isTyping = false;
+                }
+            }
+
+            type();
+        }
+        function interact() {
+            if (isInsideZone(charX, charY, interactZone1)) {
+                dia.classList.add("show");
+                isDialogue = true;
+                currentLine = 0;
+                typeText(dialogueLines[currentLine]);
+            }
+        }
+
+        function finishDia() {
+            if (isDialogue && dia_text.style.width == "100%") {
+                dia_text.classList.remove("typing");
+                isDialogue = false;
+                dia.classList.remove("show");
+                console.log("finishDia");
+            }
+        }
+        
+        setInterval(() => {
+            if (isInsideZone(charX, charY, interactZone1)) {
+                console.log("inBox");
+            }
+        }, 500);
+        function update() {
+            targetSpeed = keys["shift"] || keys["x"] ? 3.5 : 1.5;
+
+            if (doorOpen) {
+                door.style.visibility = "visible";
+                session.src = "img/therapy.png";
+            } else {
+                door.style.visibility = "hidden";
+                session.src = "img/therapy_wdoor.png";
+            }
+
+            speed += (targetSpeed - speed) * 0.1;
+
+            if (keys["arrowup"] && !bordU && !isDialogue) {
+                charY -= speed;
+                direction = "up";
+                moving = true;
+            }
+            if (keys["arrowdown"] && !bordD && !isDialogue) {
+                charY += speed;
+                direction = "down";
+                moving = true;
+            }
+            if (keys["arrowleft"] && !bordL && !isDialogue) { 
+                charX -= speed;
+                direction = "left";
+                moving = true;
+            }
+            if (keys["arrowright"] && !bordR && !isDialogue) {
+                charX += speed;
+                direction = "right";
+                moving = true;
+            }
+            // if (keys["enter"]) {
+            //     if (isDialogue) {
+            //         isDialogue  = false;
+            //     } else if (!isDialogue) {
+            //         isDialogue = true;
+            //     }
+            // }
+
+            if (moving) {    
+                switch (direction) {
+                    case "left":
+                        if (keys["arrowup"]) {
+                            setSprite(
+                                keys["shift"] || keys["x"]
+                                    ? "img/kris/kris_dw_up_run.gif"
+                                    : "img/kris/kris_dw_up.gif"
+                            );
+                        } else if (keys["arrowdown"]) {
+                            setSprite(
+                                keys["shift"] || keys["x"]
+                                    ? "img/kris/kris_dw_down_run.gif"
+                                    : "img/kris/kris_dw_down.gif"
+                            );
+                        } else {
+                            setSprite(
+                                keys["shift"] || keys["x"]
+                                    ? "img/kris/kris_dw_left_run.gif"
+                                    : "img/kris/kris_dw_left.gif"
+                            );
+                        }
+                        break;
+                    case "right":
+                        if (keys["arrowup"]) {
+                            setSprite(
+                                keys["shift"] || keys["x"]
+                                    ? "img/kris/kris_dw_up_run.gif"
+                                    : "img/kris/kris_dw_up.gif"
+                            );
+                        } else if (keys["arrowdown"]) {
+                            setSprite(
+                                keys["shift"] || keys["x"]
+                                    ? "img/kris/kris_dw_down_run.gif"
+                                    : "img/kris/kris_dw_down.gif"
+                            );
+                        } else {
+                            setSprite(
+                                keys["shift"] || keys["x"]
+                                    ? "img/kris/kris_dw_right_run.gif"
+                                    : "img/kris/kris_dw_right.gif"
+                            );
+                        }
+                        break;
+                    case "up":
+                        setSprite(
+                            keys["shift"] || keys["x"]
+                                ? "img/kris/kris_dw_up_run.gif"
+                                : "img/kris/kris_dw_up.gif"
+                        );
+                        break;
+                    case "down":
+                        setSprite(
+                            keys["shift"] || keys["x"]
+                                ? "img/kris/kris_dw_down_run.gif"
+                                : "img/kris/kris_dw_down.gif"
+                        );
+                        break;
+                }
+            } else {
+                switch (direction) {
+                    case "up":
+                        setSprite("img/kris/kris_dw_up.png")
+                        break;
+                    case "down":
+                        setSprite("img/kris/kris_dw_down.png")
+                        break;
+                    case "left":
+                        setSprite("img/kris/kris_dw_left.png")
+                        break;
+                    case "right":
+                        setSprite("img/kris/kris_dw_right.png")
+                        break;
+                }
+            }
+
+            if (charY <= 237.4568985956634) {
+                char.style.opacity = 0;
+            } else if (charY >= 263.98454661078637) {
+                char.style.opacity = 1;
+            }
+
+            //Borders
+            if (charX <= 0) {
+                charX = 0;
+            }
+            if (charY <= 0) {
+                charY = 0;
+            }
+            if (charX >= 82.74108550855132 && charX <= 103.74108550855132 && charY <= 288.84940877019056 && charY >= 187.24703003042043) {
+                doorOpen = true;
+            } else {
+                doorOpen = false;
+            }
+            //interact border
+            // if (charX >= 48.00014310488274 && charX <= 60.00014310488274) {
+            //     if (charX <= 60.00014310488274) {
+            //         charX = 60.00014310488274;
+            //     }
+            //     if (charX >= 48.00014310488274) {
+            //         charX = 48.00014310488274;
+            //     }
+            // }
+            // if (charY <= 102.4568985956634 && charY >= 87.95730857361306) {
+            //     if (charY <= 102.4568985956634) {
+            //         charY = 102.4568985956634;
+            //     }
+            //     if (charY >= 87.95730857361306) {
+            //         charY = 87.95730857361306;
+            //     }
+            // }
+            if (charX <= 106.50014310488274 && charX >= 79.50014310488274 && charY >= 183.4568985956634 && charY <= 272.34940877019056) {
+                if (charX >= 102.74108550855132) {
+                    charX = 102.74108550855132;
+                } 
+                if (charX <= 82.50014310488274) {
+                    charX = 82.70014310488274;
+                }
+            }
+            if (charY >= 183.4568985956634 && charY <= 200) {
+                if (charX <= 78.74108550855132 || charX >= 107.74108550855132) {
+                    charY = 183.4568985956634;
+                }
+            }
+            if (charY <= 272.34940877019056 && charY >= 195.95689988674633) {
+                if (charX <= 74.74108550855132 || charX >= 106.74108550855132) {
+                    charY = 272.34940877019056;
+                }
+            }
+            if (charX >= 297.00014310488274){
+                charX = 297.00014310488274;
+            }
+            if (charY >= 311.34940877019056 && charX <= 344.15540162026963) {
+                charY = 311.34940877019056;
+            }
+            if (charX <= 345.25540162026963 && charY >= 311.34940877019056 && charX >= 344.15540162026963) {
+                charX = 345.25540162026963;
+            }
+            if (charY >=  360.34945158284705) {
+                charY =  360.34945158284705;
+            }
+
+            camX = charX * camSize - window.innerWidth / 2;
+            camY = charY * camSize - window.innerHeight / 2;
+            
+            char.style.left = charX + "px";
+            char.style.top = charY + "px";
+            camX = Math.max(0, Math.min(camX, 3000 - window.innerWidth));
+            camY = Math.max(0, Math.min(camY, 3000 - window.innerHeight));
+
+            world.style.transform = `translate(${-camX}px, ${-camY}px)`;
+
+            requestAnimationFrame(update);
+        }
+        update();
+    </script>
+</body>
+</html>
