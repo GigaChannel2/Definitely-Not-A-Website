@@ -46,8 +46,11 @@ function submit() {
         default:
             wrong();
             break;
-        case "unyah":
-            playSfx("sfx/unyah.mp3");
+        case "everything is going to be okay":
+            goTo("everythingisgoingtobeokay.html");
+            break;
+        case "long poem":
+            goTo("longpoem.html");
             break;
         case "therapy session":
         case "therapy":
