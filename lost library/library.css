@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "omori";
+    src: url(../OMORI_GAME2.ttf);
+}
+body{
+    background-color: black;
+    color: white;
+    font-family: omori;
+}
+#container{
+    padding-left: 45px;
+    max-width: 700px;
+}
+#title{
+    font-size: 60px;
+}
+.butt{
+    color: white;
+    text-decoration: none;
+}
+#back{
+    margin-left: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    border: 2px solid white;
+    max-width: 100px;
+    padding: 2px;
+    text-align: center;
+    background-color: black;
+}
+.desc{
+    padding-top: 20px;
+    max-width: 600px;
+    padding-left: 20px;
+}
+#subtitle{
+    font-size: 50px;
+}
+.gap{
+    height: 1000px;
+}
+/* #backdiv{
+    text-align: right;
+} */
