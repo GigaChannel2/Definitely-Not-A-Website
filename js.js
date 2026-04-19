@@ -66,6 +66,29 @@ function submit() {
         default:
             wrong();
             break;
+        case "lost library":
+            goTo("lost_library.html");
+            break;
+        case "vallis cineris":
+            textCh("Valley of Ashes.");
+            break;
+        case "hitori gotou":
+        case "hitori gotoh":
+        case "hitorigoto":
+            goTo("");
+            break;
+        case "i fucking hate myself":
+        case "i hate myself":
+            textCh("Don't say that...");
+            break;
+        case "i hate you":
+            textCh("Correct!");
+            break;
+        case "ikuyo kita":
+        case "kita":
+        case "ikuyo":
+            goTo("https://id.pinterest.com/search/pins/?q=ikuyo%20kita&rs=typed");
+            break;
         case "everything is going to be okay":
             goTo("everythingisgoingtobeokay.html");
             break;
