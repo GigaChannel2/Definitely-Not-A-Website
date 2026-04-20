@@ -66,6 +66,12 @@ function submit() {
         default:
             wrong();
             break;
+        case "us praktek manager":
+            goTo("school/US_Praktek_9C/US_Praktek_Manager.html");
+            break;
+        case "us praktek 9c: bahasa indonesia":
+            goTo("school/US_Praktek_9C/Bahasa Indonesia/Naskah_Drama_Malin_Kundang-Web_Ver.html");
+            break;
         case "us praktek 9c: english":
             goTo("school/US_Praktek_9C/English/Recount_Text.html");
             break;
