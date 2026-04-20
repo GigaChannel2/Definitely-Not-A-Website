@@ -66,6 +66,9 @@ function submit() {
         default:
             wrong();
             break;
+        case "tiba-tiba":
+            goTo("tiktokvideoifoundthatscool.html");
+            break;
         case "lost library":
             goTo("lost_library.html");
             break;
