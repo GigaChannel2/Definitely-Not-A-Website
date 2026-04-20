@@ -66,6 +66,9 @@ function submit() {
         default:
             wrong();
             break;
+        case "us praktek 9c: english":
+            goTo("school/US_Praktek_9C/English/Recount_Text.html");
+            break;
         case "tiba-tiba":
             goTo("tiktokvideoifoundthatscool.html");
             break;
