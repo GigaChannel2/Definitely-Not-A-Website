@@ -17,7 +17,6 @@
         }
         #container {
             display: inline-block;
-            
             height: 90px;
         }
         #title {
@@ -27,11 +26,29 @@
             text-align: left;
             max-width: 500px;
         }
+        
+        #back{
+            margin-left: 20px;
+            position: absolute;
+            top: 0;
+            z-index: 3;
+            border: 2px solid white;
+            max-width: 100px;
+            padding: 2px;
+            text-align: center;
+            background-color: black;
+        }
+        .butt{
+            color: white;
+            text-decoration: none;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
     <audio src="../../../exp_jingle.m4a" autoplay></audio>
     <audio src="../../../lost_library.m4a" loop autoplay></audio>
+    <h1 id="back"><a href="../US_Praktek_Manager.html" class="butt"> Go Back </a></h1>
     <div id="container">
         <h1 id="title"> The Wallet I Found </h1>
         <h1 id="text">
