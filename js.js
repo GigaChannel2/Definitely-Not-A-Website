@@ -66,7 +66,7 @@ function submit() {
         default:
             wrong();
             break;
-        case "with hope crossed on her hearts":
+        case "with hope crossed on her heart":
             goTo("with_hope_crossed_on_her_heart.html");
             break;
         case "us praktek manager":
