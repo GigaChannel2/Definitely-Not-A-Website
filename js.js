@@ -66,6 +66,9 @@ function submit() {
         default:
             wrong();
             break;
+        case "with hope crossed on our hearts":
+            goTo("with_hope_crossed_on_our_hearts.html");
+            break;
         case "with hope crossed on her heart":
             goTo("with_hope_crossed_on_her_heart.html");
             break;
