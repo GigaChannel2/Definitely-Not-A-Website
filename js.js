@@ -67,7 +67,7 @@ function submit() {
             wrong();
             break;
         case "with hope crossed on her hearts":
-            goTo("with_hope_crossed_on_her_hearts.html");
+            goTo("with_hope_crossed_on_her_heart.html");
             break;
         case "us praktek manager":
             goTo("school/US_Praktek_9C/US_Praktek_Manager.html");
