@@ -15,10 +15,12 @@
             color: black;
             font-family: "Source Code Pro", monospace;
             text-align: center;
+            transition: all 1s ease;
         }
         body.dark {
             background-color: black;
             color: white;
+            transition: all 1s ease;
         }
         #container {
             display: inline-block;
@@ -54,11 +56,15 @@
             background-color: white;
             color: black;
             border: 2px solid black;
+            pointer-events: visible;
+            user-select: none;
+            transition: all 1s ease;
         }
         #back.dark {
             background-color: black;
-            color: black;
+            color: white;
             border: 2px solid white;
+            transition: all 1s ease;
         }
         #darkmode{
             margin-left: 20px;
@@ -71,21 +77,37 @@
             background-color: white;
             border: 2px solid black;
             font-size: 25px;
+            user-select: none;
+            -ms-user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            cursor: pointer;
+            transition: all 1s ease;
+        }
+        #darkmode.dark {
+            background-color: black;
+            border: 2px solid white;
+            transition: all 1s ease;
         }
         .butt{
             color: black;
             text-decoration: none;
             padding: 5px;
             font-family: omori;
+            transition: all 1s ease;
         }
         .butt.dark {
             color: white;
+            transition: all 1s ease;
+        }
+        #back_txt{
+            transition: all 1s ease;
         }
     </style>
 </head>
 <body>
-    <h1 id="back"><a href="../US_Praktek_Manager.html" class="butt">Back</a></h1>
-    <h1 id="darkmode"><a class="butt">Toggle Dark Mode: On</a></h1>
+    <h1 id="back"><a href="../US_Praktek_Manager.html" id="back_txt" class="butt">Back</a></h1>
+    <h1 id="darkmode"><a class="butt">Dark Mode: Off</a></h1>
     <div id="container">
         <h1 id="title" class="dialogue">Naskah Drama Malin Kundang</h1>
         <div id="content">
@@ -200,8 +222,24 @@
         </div>
     </div>
     <script>
+        let dark = false;
+
         document.getElementById("darkmode").addEventListener("click", function() {
-            
+            if (dark) {
+                document.body.classList.add("dark");
+                document.getElementById("darkmode").innerHTML = '<a class="butt dark">Dark Mode: On</a>';
+                document.getElementById("back_txt").classList.add("dark");
+                document.getElementById("darkmode").classList.add("dark");
+                document.getElementById("back").classList.add("dark");
+                dark = false;
+            } else {
+                document.body.classList.remove("dark");
+                document.getElementById("darkmode").innerHTML = '<a class="butt">Dark Mode: Off</a>';
+                document.getElementById("back_txt").classList.remove("dark");
+                document.getElementById("darkmode").classList.remove("dark");
+                document.getElementById("back").classList.remove("dark");
+                dark = true;
+            }
         });
     </script>
 </body>
