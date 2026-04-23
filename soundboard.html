@@ -66,6 +66,7 @@
         <h1 class="btn" id="sad_btn">Sad Sound</h1>
         <h1 class="btn" id="ocean_btn">Ocean Waves</h1>
         <h1 class="btn" id="nature_btn">Nature/Bird SFX</h1>
+        <h1 class="btn" id="bagaimanakah">Bagaimankah</h1>
         <div class="lilgap"></div>
         <h1>Petir SFX</h1>
         <audio id="petir_audio" controls src="sfx/soundboard/petir.mp3"></audio>
@@ -79,6 +80,8 @@
         <audio id="ocean_audio" controls src="sfx/soundboard/ocean-wave.mp3"></audio>
         <h1>Nature/Bird SFX</h1>
         <audio id="nature_audio" controls src="sfx/soundboard/nature.mp3"></audio>
+        <h1>Bagaimanakah SFX</h1>
+        <audio id="bagaimanakah_audio" controls src="sfx/soundboard/Opick.mp3"></audio>
         <div class="lilgap"></div>
         <h1>SFX Button (Stackable)</h1>
         <h1 class="btn" id="petir_btn_stck">Petir</h1>
@@ -86,6 +89,7 @@
         <h1 class="btn" id="sad_btn_stck">Sad Sound</h1>
         <h1 class="btn" id="ocean_btn_stck">Ocean Waves</h1>
         <h1 class="btn" id="nature_btn_stck">Nature/Bird SFX</h1>
+        <h1 class="btn" id="bagaimanakah_btn_stck">Bagaimanakah SFX</h1>
     </div>
     <script>
         let romantic = document.getElementById("romantic_audio");
@@ -93,6 +97,7 @@
         let sad = document.getElementById("sad_audio");
         let ocean = document.getElementById("ocean_audio");
         let nature = document.getElementById("nature_audio");
+        let bagaimana = document.getElementById("bagaimanakah_audio");
         document.getElementById('petir_btn').addEventListener('click', function() {
             petir.currentTime = 0.278967;
             petir.play();
@@ -116,6 +121,11 @@
         document.getElementById('nature_btn').addEventListener('click', function() {
             nature.currentTime = 0;
             nature.play();
+        });
+        
+        document.getElementById('bagaimanakah_btn').addEventListener('click', function() {
+            bagaimana.currentTime = 0;
+            bagaimana.play();
         });
 
         document.getElementById('petir_btn_stck').addEventListener('click', function() {
@@ -146,6 +156,12 @@
             let natureClone = nature.cloneNode();
             natureClone.currentTime = 0;
             natureClone.play();
+        });
+        
+        document.getElementById('bagaimanakah_btn_stck').addEventListener('click', function() {
+            let bagaimanaClone = bagaimana.cloneNode();
+            bagaimanaClone.currentTime = 0;
+            bagaimanaClone.play();
         });
 
     </script>
