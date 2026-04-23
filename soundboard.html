@@ -113,6 +113,11 @@
             ocean.play();
         });
 
+        document.getElementById('nature_btn').addEventListener('click', function() {
+            nature.currentTime = 0;
+            nature.play();
+        });
+
         document.getElementById('petir_btn_stck').addEventListener('click', function() {
             let petirClone = petir.cloneNode();
             petirClone.currentTime = 0.278967;
@@ -135,6 +140,12 @@
             let oceanClone = ocean.cloneNode();
             oceanClone.currentTime = 0;
             oceanClone.play();
+        });
+        
+        document.getElementById('nature_btn_stck').addEventListener('click', function() {
+            let natureClone = nature.cloneNode();
+            natureClone.currentTime = 0;
+            natureClone.play();
         });
 
     </script>
