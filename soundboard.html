@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soundboard</title>
+    <style>
+        @font-face {
+            font-family: "omori";
+            src: url(OMORI_GAME2.ttf);
+        }
+        body {
+            background-color: rgb(255, 255, 255);
+            color: black;
+            font-family: "omori";
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+        h1{
+            font-weight: normal;
+            text-align: center;
+        }
+        #container {
+            max-height: 100vh;
+        }
+        .btn {
+            border: 2px solid black;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+            color: black;
+            text-decoration: none;
+            text-align: center;
+            max-width: 200px;
+            user-select: none;
+        }
+        audio {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+        .lilgap {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Soundboard</h1>
+        <iframe width="110" height="200" src="https://www.myinstants.com/instant/musica-romantica-23580/embed/" frameborder="0" scrolling="no"></iframe>
+        <iframe width="110" height="200" src="https://www.myinstants.com/instant/petir-1800/embed/" frameborder="0" scrolling="no"></iframe>
+        <h1>SFX Button (Non Stackable)</h1>
+        <h1 class="btn" id="petir_btn">Petir</h1>
+        <h1 class="btn" id="romantic_btn">Romance Sound</h1>
+        <div class="lilgap"></div>
+        <audio id="petir_audio" controls src="sfx/soundboard/petir.mp3"></audio>
+        <audio id="romantic_audio" controls src="sfx/soundboard/musica-romantica.mp3"></audio>
+        <audio id="romantic_audio" controls src="sfx/soundboard/musica-romantica-full.mp3"></audio>
+        <div class="lilgap"></div>
+        <h1>SFX Button (Stackable)</h1>
+        <h1 class="btn" id="petir_btn_stck">Petir</h1>
+        <h1 class="btn" id="romantic_btn_stck">Romance Sound</h1>
+    </div>
+    <script>
+        let romantic = document.getElementById("romantic_audio");
+        let petir = document.getElementById("petir_audio");
+        document.getElementById('petir_btn').addEventListener('click', function() {
+            petir.currentTime = 0.278967;
+            petir.play();
+        });
+
+        document.getElementById('romantic_btn').addEventListener('click', function() {
+            romantic.currentTime = 0;
+            romantic.play();
+        });
+
+        document.getElementById('petir_btn_stck').addEventListener('click', function() {
+            let petirClone = petir.cloneNode();
+            petirClone.currentTime = 0.278967;
+            petirClone.play();
+        });
+
+        document.getElementById('romantic_btn_stck').addEventListener('click', function() {
+            let romanticClone = romantic.cloneNode();
+            romanticClone.currentTime = 0;
+            romanticClone.play();
+        });
+
+    </script>
+</body>
+</html>
