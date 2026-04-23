@@ -66,6 +66,10 @@ function submit() {
         default:
             wrong();
             break;
+        case "see you tomorrow":
+            // code 120
+            goTo("see_you_tomorrow.html");
+            break;
         case "soundboard":
             // code 119
             goTo("soundboard.html");
