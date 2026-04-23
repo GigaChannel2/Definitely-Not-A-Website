@@ -45,16 +45,27 @@
             padding-top: 30px;
             padding-bottom: 30px;
         }
+        #container2 {
+            display: inline-block;
+            max-width: 260px;
+        }
     </style>
 </head>
 <body>
     <div id="container">
         <h1>Soundboard</h1>
-        <iframe width="110" height="200" src="https://www.myinstants.com/instant/musica-romantica-23580/embed/" frameborder="0" scrolling="no"></iframe>
-        <iframe width="110" height="200" src="https://www.myinstants.com/instant/petir-1800/embed/" frameborder="0" scrolling="no"></iframe>
+        <div id="container2">
+            <iframe width="110" height="200" src="https://www.myinstants.com/instant/musica-romantica-23580/embed/" frameborder="0" scrolling="no"></iframe>
+            <iframe width="110" height="200" src="https://www.myinstants.com/instant/petir-1800/embed/" frameborder="0" scrolling="no"></iframe>
+            <iframe width="110" height="200" src="https://www.myinstants.com/instant/sad-sound-5290/embed/" frameborder="0" scrolling="no"></iframe>
+            <iframe width="110" height="200" src="https://www.myinstants.com/instant/ocean-waves-57050/embed/" frameborder="0" scrolling="no"></iframe>
+        </div>
         <h1>SFX Button (Non Stackable)</h1>
         <h1 class="btn" id="petir_btn">Petir</h1>
         <h1 class="btn" id="romantic_btn">Romance Sound</h1>
+        <h1 class="btn" id="sad_btn">Sad Sound</h1>
+        <h1 class="btn" id="ocean_btn">Ocean Waves</h1>
+        <h1 class="btn" id="nature_btn">Nature/Bird SFX</h1>
         <div class="lilgap"></div>
         <h1>Petir SFX</h1>
         <audio id="petir_audio" controls src="sfx/soundboard/petir.mp3"></audio>
@@ -62,14 +73,26 @@
         <audio id="romantic_audio" controls src="sfx/soundboard/musica-romantica.mp3"></audio>
         <h1>Romantic SFX Full</h1>
         <audio id="romantic_audio_full" controls src="sfx/soundboard/musica-romantica-full.mp3"></audio>
+        <h1>Sad SFX</h1>
+        <audio id="sad_audio" controls src="sfx/soundboard/sad-sound.mp3"></audio>
+        <h1>Ocean Wave SFX</h1>
+        <audio id="ocean_audio" controls src="sfx/soundboard/ocean-wave.mp3"></audio>
+        <h1>Nature/Bird SFX</h1>
+        <audio id="nature_audio" controls src="sfx/soundboard/nature.mp3"></audio>
         <div class="lilgap"></div>
         <h1>SFX Button (Stackable)</h1>
         <h1 class="btn" id="petir_btn_stck">Petir</h1>
         <h1 class="btn" id="romantic_btn_stck">Romance Sound</h1>
+        <h1 class="btn" id="sad_btn_stck">Sad Sound</h1>
+        <h1 class="btn" id="ocean_btn_stck">Ocean Waves</h1>
+        <h1 class="btn" id="nature_btn_stck">Nature/Bird SFX</h1>
     </div>
     <script>
         let romantic = document.getElementById("romantic_audio");
         let petir = document.getElementById("petir_audio");
+        let sad = document.getElementById("sad_audio");
+        let ocean = document.getElementById("ocean_audio");
+        let nature = document.getElementById("nature_audio");
         document.getElementById('petir_btn').addEventListener('click', function() {
             petir.currentTime = 0.278967;
             petir.play();
@@ -78,6 +101,16 @@
         document.getElementById('romantic_btn').addEventListener('click', function() {
             romantic.currentTime = 0;
             romantic.play();
+        });
+
+        document.getElementById('sad_btn').addEventListener('click', function() {
+            sad.currentTime = 0;
+            sad.play();
+        });
+
+        document.getElementById('ocean_btn').addEventListener('click', function() {
+            ocean.currentTime = 0;
+            ocean.play();
         });
 
         document.getElementById('petir_btn_stck').addEventListener('click', function() {
@@ -90,6 +123,18 @@
             let romanticClone = romantic.cloneNode();
             romanticClone.currentTime = 0;
             romanticClone.play();
+        });
+
+        document.getElementById('sad_btn_stck').addEventListener('click', function() {
+            let sadClone = sad.cloneNode();
+            sadClone.currentTime = 0;
+            sadClone.play();
+        });
+
+        document.getElementById('ocean_btn_stck').addEventListener('click', function() {
+            let oceanClone = ocean.cloneNode();
+            oceanClone.currentTime = 0;
+            oceanClone.play();
         });
 
     </script>
