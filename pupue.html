@@ -7,33 +7,35 @@
     <style>
         body{
             background-color: black;
-            display: flex;
             justify-content: center;
             align-items: center;
-            height: 98vh;
         }
         video{
             pointer-events: none;
-            height: none;
-            width: 100%;
-            display: block;
+            height: 80%;
+            width: 80%;
             visibility: hidden;
-            position: relative;
+            z-index: 0;
+            display: block;
+            justify-self: center;
+            align-self: center;
         }
         #img{
-            position: relative;
-            text-align: center;
             align-items: center;
             justify-self: center;
             z-index: 1;
-            display:block;
-            height: none;
-            width: 100%;
+            display: block;
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            position: absolute;
         }
         #contain{
-            display: flex;
-            width: 90%;
+            width: 100vw;
+            height: 100vh;
             max-width: 900px;
+            display: block;
+            justify-content: center;
         }
     </style>
 </head>
