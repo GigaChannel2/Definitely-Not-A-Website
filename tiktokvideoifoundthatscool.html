@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tiba-Tiba</title>
     <link rel="stylesheet" href="vid/vid.css">
+    <style>
+        #container {
+            opacity: 1;
+            transition: all 1s ease;
+        }
+        #container.hide {
+            opacity: 0;
+            transition: all 1s ease;
+        }
+    </style>
     <!-- <style>
         body {
             margin: 0;
@@ -32,5 +42,19 @@
             <source src="tiba-tiba.mp4" type="video/mp4">
         </video>
     </div>
+    <script>
+        let hide = false;
+        let video = document.querySelector("video");
+
+        video.addEventListener("ended", () => {
+            document.getElementById("container").classList.add("hide");
+        });
+        // setInterval(() => {
+        //     if (!hide && video.currentTime >= video.duration) {
+        //         document.getElementById("container").classList.add("hide");
+        //         hide = true;
+        //     }
+        // }, 500)
+    </script>
 </body>
 </html>
