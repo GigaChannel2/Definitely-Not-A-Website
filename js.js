@@ -23,21 +23,37 @@ setTimeout(function() {
 document.addEventListener("keydown", (e) => {
     if (e.keyCode === 123) {
         e.preventDefault();
+        let wrongSfx = new Audio("wrong_password.mp3").play();
     }
     if (e.ctrlKey && e.key === "u") {
         e.preventDefault();
+        let wrongSfx = new Audio("wrong_password.mp3").play();
     }
     if (e.ctrlKey && e.shiftKey && e.key == 'I') {
         e.preventDefault();
+        let wrongSfx = new Audio("wrong_password.mp3").play();
     }
     if (e.ctrlKey && e.shiftKey && e.key == 'C') {
         e.preventDefault();
+        let wrongSfx = new Audio("wrong_password.mp3").play();
     }
     if (e.ctrlKey && e.shiftKey && e.key == 'J') {
         e.preventDefault();
+        let wrongSfx = new Audio("wrong_password.mp3").play();
     }
     if (e.ctrlKey && e.shiftKey && e.key === "I") {
         e.preventDefault();
+        let wrongSfx = new Audio("wrong_password.mp3").play();
+    }
+});
+
+password.addEventListener("input", (e) => {
+    pass = password.value.toLowerCase();
+
+    if (pass.length > 0 && "freedom".startsWith(pass) && e.inputType !== "deleteContentBackward") {
+        let type = new Audio("sfx/type.mp3");
+        type.currentTime = 0;
+        type.play();
     }
 });
 
@@ -51,7 +67,6 @@ function close_d() {
     dia.close();
 }
 function submit() {
-    pass = password.value.toLowerCase();
     let donate = document.getElementById("donation");
     let sfx_donate = document.getElementById("sfx_donate");
     if (pass == "donate"){
@@ -65,6 +80,14 @@ function submit() {
     switch (pass){
         default:
             wrong();
+            break;
+        case "freedom":
+            // code 122
+            textCh("Lies");
+            break;
+        case "adore":
+            // code 121
+            goTo("palace.html");
             break;
         case "see you tomorrow":
             // code 120
