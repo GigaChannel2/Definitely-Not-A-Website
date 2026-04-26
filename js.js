@@ -81,6 +81,16 @@ function submit() {
         default:
             wrong();
             break;
+        case "cyber world":
+        case "a cyber world":
+        case "a cyber world?":
+            //code 127
+            goTo("cyberworld.html");
+            break;
+        case "good morning":
+            //code 126 
+            goTo("goodmorning.html");
+            break;
         case "searching for a world":
             //code 125
             textCh("NULL<br> Reason: That Doesn't Exist");
