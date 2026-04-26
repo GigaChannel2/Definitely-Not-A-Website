@@ -81,6 +81,18 @@ function submit() {
         default:
             wrong();
             break;
+        case "searching for a world":
+            //code 125
+            textCh("NULL<br> Reason: That Doesn't Exist");
+            break;
+        case "trinity":
+            // code 124
+            goTo("trinity.html");
+            break;
+        case "fiend":
+            //code 123
+            goTo("fiend.html");
+            break;
         case "freedom":
             // code 122
             textCh("Lies");
