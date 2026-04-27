@@ -81,6 +81,10 @@ function submit() {
         default:
             wrong();
             break;
+        case "oyasumi":
+            //code 128
+            goTo("oyasumi.html");
+            break;
         case "cyber world":
         case "a cyber world":
         case "a cyber world?":
