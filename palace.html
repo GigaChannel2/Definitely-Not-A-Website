@@ -9,7 +9,7 @@
 <body>
     <h1><a href="https://vt.tiktok.com/ZS9jKmQsS/">Original Source</a></h1>
     <div id="container">
-        <video id="vid" controls autoplay name="media" loop>
+        <video id="vid" autoplay name="media" loop>
         </video>
     </div>
     <script>
@@ -22,14 +22,14 @@
             document.getElementById("container").style.pointerEvents = "none";
         }
         
-        const bloblink = URL.createObjectURL("vid/palace.mp4");
-        video.src = bloblink;
+        // const bloblink = URL.createObjectURL("vid/palace.mp4");
+        // video.src = bloblink;
 
-        video.onloadeddata(() => {
-            URL.revokeObjectURL(bloblink);
-        });
+        // video.onloadeddata(() => {
+        //     URL.revokeObjectURL(bloblink);
+        // });
         
-        // video.src = "vid/palace.mp4";
+        video.src = "vid/palace.mp4";
     </script>
 </body>
 </html>
