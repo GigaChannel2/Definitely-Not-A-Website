@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hall Of Memories</title>
+    <style>
+        @font-face {
+            font-family: omori;
+            src: url(OMORI_GAME2.ttf);
+        }
+        body {
+            background-color: black;
+            color: white;
+            font-family: omori;
+        }
+        #title {
+            font-size: 50px;
+        }
+        #container {
+            padding-left: 30px;
+            max-width: max-content;
+            max-height: fit-content;
+        }
+        #btn_con {
+            max-width: max-content;
+            display: inline-block;
+        }
+        .btn {
+            padding: 15px;
+            border: 3px solid white;
+        }
+        .btn_txt {
+            user-select: none;
+            text-decoration: none;
+            color: white;
+            font-weight: normal;
+        }
+        .lilgap {
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <audio src="songs/lost_at_a_sleepover.m4a" autoplay loop></audio>
+    <div id="container">
+        <h1 id="title">Hall Of Memories.</h1>
+        <h1>A Memories That Worth Of Keeping</h1>
+        <div class="lilgap"></div>
+        <div id="btn_con">
+            <h1 class="btn"><a class="btn_txt" href="">Memory 1</a></h1>
+        </div>
+    </div>
+    <script>
+        let aud = document.querySelector("audio");
+        // setInterval(() => {
+        //     console.log(aud.currentTime);
+        //     // aud.currentTime = 2;
+        //     if (aud.currentTime === 45) {
+        //         aud.currentTime = 0;
+        //     }
+        // }, 200);
+        aud.addEventListener("timeupdate", function() {
+            console.log(aud.currentTime);
+            if (aud.currentTime >= 43.88) {
+                aud.currentTime = 0;
+            }
+        });
+        // while (true) {
+        //     if (aud.currentTime == 45) {
+        //         aud.currentTime = 0;
+        //     }
+        //     // console.log(aud.duration);
+        // }
+    </script>
+</body>
+</html>

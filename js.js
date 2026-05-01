@@ -81,6 +81,14 @@ function submit() {
         default:
             wrong();
             break;
+        case "hall of memories":
+            // code 130
+            goTo("memories_hall.html");
+            break;
+        case "memories":
+            // code 129
+            goTo("memories.html");
+            break;
         case "oyasumi":
             //code 128
             goTo("oyasumi.html");

@@ -10,6 +10,7 @@
     <h1><a href="https://vt.tiktok.com/ZS9jKmQsS/">Original Source</a></h1>
     <div id="container">
         <video id="vid" autoplay name="media" loop>
+            <source src="vid/palace.mp4" type="video/mp4">
         </video>
     </div>
     <script>
@@ -21,15 +22,43 @@
         } else {
             document.getElementById("container").style.pointerEvents = "none";
         }
+
+        const data = "BIMBIMBAMBAM";
+        // const blob = new Blob(["vid/palace.mp4"], { type: 'text/plain'});
+
+        // const url = URL.createObjectURL(blob);
+        // console.log(url);
         
-        // const bloblink = URL.createObjectURL("vid/palace.mp4");
-        // video.src = bloblink;
+        // fetch("vid/palace.mp4")
+        //     .then(function(res) {
+        //         return res.blob();
+        //     })
+        //     .then(function(blob) {
+        //         const bloblink = URL.createObjectURL(blob);
+        //         video.src = bloblink;
+        // });
+        const bloblink = URL.createObjectURL(["vid/palace.mp4"]);
+        console.log(bloblink);
+        video.src = bloblink;
 
         // video.onloadeddata(() => {
         //     URL.revokeObjectURL(bloblink);
         // });
         
-        video.src = "vid/palace.mp4";
+        // video.src = "vid/palace.mp4";
+
+        const int = 0;
+        document.addEventListener("keydown", (e) => {
+            // switch (e.code) {
+            //     case "Enter":
+            //         new Audio("sfx/soundboard/petir.mp3").play();
+            //         break;
+            // }
+
+            if (e.key === "q") {
+                alert("Q pressed!");
+            }
+        });
     </script>
 </body>
 </html>
